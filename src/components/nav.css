@@ -1,0 +1,45 @@
+img {
+  width: 10vw;
+  height: auto;
+}
+.navbar {
+  background: linear-gradient(180deg, #0f3057, rgba(15, 48, 87, 0.2));
+  box-shadow: 0px 4px 35px rgba(15, 48, 87, 0.81);
+  position: fixed;
+  width: 100%;
+}
+
+.bgimg{
+    width: 100vw;
+    height: 80vh;
+    object-fit: contain;
+}
+
+.form-control {
+  border: none;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #fff;
+}
+.form-control:focus {
+  border: none;
+  border-radius: 25px;
+  background-color: transparent;
+  color: #fff;
+}
+.searchcon {
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(178, 221, 224, 0.47);
+  box-shadow: 0px 4px 25px 2px rgba(0, 0, 0, 0.25);
+  margin: 4px;
+}
+
+svg {
+  color: #fff;
+}
+
+.person {
+  width: 20px;
+  height: auto;
+}

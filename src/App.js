@@ -11,6 +11,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Destinations from "./pages/Destinations";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Form from "./components/Gig-Form/form";
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
@@ -19,9 +20,9 @@ function App() {
       <NavBar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}/>
-            <Route path="/destinations" element={<Destinations />} />
-         
+          <Route path="/" element={<Home />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/gig" element={<Form />} />
         </Routes>
       </BrowserRouter>
       {/* <Home /> */}

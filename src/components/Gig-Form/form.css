@@ -22,6 +22,11 @@
   min-height: 100vh;
   background-image: url("https://images.pexels.com/photos/163185/old-retro-antique-vintage-163185.jpeg?auto=compress&cs=tinysrgb&w=600");
   z-index: 0;
+  /* position: absolute; */
+  top: 0;
+  width: 100%;
+  background-size: cover;
+
 }
 /* Global Stylings */
 label {
@@ -180,6 +185,8 @@ margin-right: 5px;
   border-radius: 0.35rem;
   padding: 1.5rem;
   background-color: white;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .form-step {
@@ -214,7 +221,7 @@ margin-right: 5px;
   gap: 1.5rem;
 }
 
-.btn {
+.fbtn {
   padding: 0.75rem;
   display: block;
   text-decoration: none;

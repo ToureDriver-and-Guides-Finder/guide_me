@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Gig-Form/form.css';
 
-export default function App() {
+
+export default function Form() {
   const [formStepsNum, setFormStepsNum] = useState(0);
 
   const formSteps = [
@@ -47,7 +48,7 @@ export default function App() {
         </div>
       </div>
       <div className='btns-group'>
-        <button onClick={() => handleNextStep()} className="btn btn-next width-50 ml-auto">Next</button>
+        <button onClick={() => handleNextStep()} className="btn btn-next width-50 ml-auto fbtn">Next</button>
       </div>
     </div>,
     // Define other form steps here

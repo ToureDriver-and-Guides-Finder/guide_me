@@ -42,6 +42,11 @@
   font-size: calc(32px + 0.390625vw);
   left: 10%;
 }
+.para{
+  font-size: 1.8vw;
+  line-height: 1.5;
+  letter-spacing: 2px;
+}
 /* .bgimg-2 {
   object-fit: contain;
 }
@@ -61,17 +66,22 @@
   height: 50vh;
   
 }
+.para{
+  font-size: 3vw;
+  line-height: 1.5;
+  letter-spacing: 2px;
+}
 .text-overlay {
   
-  /* font-size: 3rem; */
+  font-size: 3rem;
   text-align: center;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
-  top: 10%;
+  top: 25%;
   left: 0px;
-  
+  font-weight: 600; 
 }
 .left-con {
   
@@ -84,7 +94,21 @@
 }
 @media only screen and (max-width: 550px) {
   .right-con {
-  padding: 2rem;
+  padding: 12px;
+  text-align: center;
+  
+}
+.text-overlay{
+  top: 22%;
+  font-size: 8vw;
+  
+}
+.left-con{
+  height: 40vh;
+}
+.bgimg-2 {
+
+  height: 40vh;
   
 }
 }

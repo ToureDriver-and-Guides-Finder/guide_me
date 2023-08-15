@@ -1,37 +1,47 @@
-.main-topic{
-    font-size: 2vw;
+.main-topic {
+  font-size: 2vw;
 }
 
-.d-card{
-    position: relative;
+.d-card {
+  position: relative;
 }
-.d-text-div{
-    position: absolute;
-    top: 8%;
-    color: white;
-    left: 8%;
+.d-text-div {
+  position: absolute;
+  top: 8%;
+  color: white;
+  left: 8%;
 }
-.d-title{
-    font-size: 4vw;
+.d-title {
+  font-size: 4vw;
+  font-weight: 600;
 }
-.d-text{
-    font-size: 2vw;
+.d-text {
+  font-size: 2vw;
 }
-.d-btn{
-    min-width: 100px;
+.d-btn {
+  min-width: 100px;
 }
 @media only screen and (max-width: 990px) {
-    .main-topic{
-        font-size: calc(25px + 0.390625vw);
-    }
-    .d-title-row , .d-card-row{
-        flex-direction: column;
-    }
-    .d-card-row > .col-5{
-        width: 100%;
-    }
-    .d-title-row > .col-5{
-        width: 100%;
-    }
-
+  .main-topic {
+    font-size: 4vw;
+    font-weight: 600;
+  }
+  .d-title-row,
+  .d-card-row {
+    flex-direction: column;
+  }
+  .d-card-row > .col-5 {
+    width: 100%;
+  }
+  .d-title-row > .col-5 {
+    width: 100%;
+  }
+  .d-title {
+    font-size: 6vw;
+  }
+  .d-text {
+    font-size: 4vw;
+  }
 }
+
+

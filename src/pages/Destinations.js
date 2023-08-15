@@ -6,10 +6,10 @@ const Destinations = () => {
   return (
     <div>
       <div className="container mt-4">
-        <h1 class="main-topic-main" style={{ fontSize: "3vw",fontWeight:"400" }}>
+        <h1 class="main-topic-main">
           Explore and Experience
         </h1>
-        <h4 class="sub-topic" style={{ fontSize: "2vw" }}>
+        <h4 class="sub-topic">
           Search popular destinations for your journey..
         </h4>
       </div>

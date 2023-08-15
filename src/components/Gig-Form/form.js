@@ -176,7 +176,7 @@ export default function Form() {
   return (
     <main>
       <div className="formb">
-        <form className="form">
+        <form className="form-con">
           <h1 className="text-center">Plan Your Trip</h1>
           <p className='small'>
             <small className='text-center'>

@@ -1,19 +1,20 @@
 import "bootstrap/dist/css/bootstrap.css";
-
+import "bootstrap/js/src/collapse.js";
 import Logo from "../images/logo1.png";
 import "../components/nav.css";
 import { PersonCircle, Search } from "react-bootstrap-icons";
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+    
+    <nav className="navbar navbar-expand-lg navbar-dark ">
       <a className="navbar-brand" href="/">
         <img src={Logo} className="nav" />
       </a>
       <button
         className="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent"
         aria-expanded="false"
         aria-label="Toggle navigation"
@@ -29,7 +30,7 @@ const NavBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white" href="#">
+            <a className="nav-link text-white" href="/tour">
               Tour Plan
             </a>
           </li>

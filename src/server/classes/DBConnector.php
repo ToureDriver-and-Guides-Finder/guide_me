@@ -2,8 +2,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header("Access-Control-Allow-Methods: *");
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
 header("Access-Control-Allow-Headers: *");
+header('Access-Control-Allow-Credentials:true');
 class DBConnector
 {
     private $server = "localhost";
@@ -19,7 +20,7 @@ class DBConnector
     public function  getConnection()
     {
         try {
-            $dbconn = new PDO("mysql:host=$this->server;dbname=testdb;charset=UTF8", $this->username, $this->password);
+            $dbconn = new PDO("mysql:host=$this->server;dbname=$this->dbname;charset=UTF8", $this->username, $this->password);
             $dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // echo "Data from DBConnection"; 
             
@@ -30,6 +31,3 @@ class DBConnector
         return $dbconn;
     }
 }
-
-
-?>

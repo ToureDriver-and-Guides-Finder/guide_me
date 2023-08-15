@@ -9,7 +9,7 @@ const DestinationCategory = () => {
           <h1 className="main-topic">BROWSE DESTINATIONS BY CATEGORY</h1>
         </div>
         <div className="col-5">
-          <p>
+          <p className="para">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

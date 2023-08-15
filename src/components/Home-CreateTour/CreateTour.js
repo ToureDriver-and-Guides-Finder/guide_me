@@ -11,7 +11,7 @@ const CreateTour = () => {
         </h1>
       </div>
       <div className="right-con">
-        <p>
+        <p className="para">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
           malesuada dolor et ultrices semper. Cras interdum sed augue et
           ullamcorper. Proin egestas bibendum interdum. In mi urna, tincidunt

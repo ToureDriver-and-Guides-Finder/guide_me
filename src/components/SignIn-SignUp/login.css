@@ -14,7 +14,7 @@
 .auth-body{
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: auto;
   align-items: center;
   justify-content: center;
   background: url("../../images/auth.jpg");

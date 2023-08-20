@@ -1,5 +1,9 @@
 import DestinationCard from "./destinationcard";
 import "../Home-Destination/destination.css";
+import CdImg1 from "../../images/adventure.jpg";
+import CdImg2 from "../../images/art.jpg";
+import CdImg3 from "../../images/family.jpg";
+import CdImg4 from "../../images/road.jpg";
 
 const DestinationCategory = () => {
   return (
@@ -19,20 +23,18 @@ const DestinationCategory = () => {
       </div>
       <div className="row justify-content-center g-5 d-card-row">
         <div className="col-5">
-          <DestinationCard />
+          <DestinationCard props={["ADVENTURE", CdImg1]} />
         </div>
         <div className="col-5">
-          <DestinationCard />
+          <DestinationCard props={["ART & CULTURE", CdImg2]} />
         </div>
         <div className="col-5 ">
-          <DestinationCard />
+          <DestinationCard props={["FAMILY", CdImg3]} />
         </div>
         <div className="col-5 ">
-          <DestinationCard />
+          <DestinationCard props={["ROAD TRIP", CdImg4]} />
         </div>
       </div>
-
-     
     </div>
   );
 };

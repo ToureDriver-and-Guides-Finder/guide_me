@@ -411,7 +411,7 @@
   .banner_bg {
     background-size: cover;
     height: auto;
-    background: #02d163;
+    /* background: #02d163; */
     padding-bottom: 50px;
   }
   .banner_taital {

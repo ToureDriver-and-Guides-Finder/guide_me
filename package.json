@@ -1,7 +1,6 @@
 {
   "name": "guide_me",
   "version": "0.1.0",
-  "homepage": "https://touredriver-and-guides-finder.github.io/guide_me/public/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -10,6 +9,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
+    "firebase": "^10.2.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-icons": "^1.10.3",

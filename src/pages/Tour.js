@@ -108,7 +108,7 @@ const TourMain = () => {
                   every traveler's unique passions and interests.
                 </p>
                 <div className="read_bt">
-                  <a href="#">PLAN YOUR TRIP</a>
+                  <a href="/gig">PLAN YOUR TRIP</a>
                 </div>
               </div>
             </div>

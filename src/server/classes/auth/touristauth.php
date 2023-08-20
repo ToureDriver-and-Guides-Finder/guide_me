@@ -11,12 +11,6 @@ use auth\AuthUser;
 require_once "authuser.php";
 include '../classes/DBConnector.php';
 
-
-
-
-
-
-
 class Tourist extends AuthUser
 {
     private $first_name;
@@ -28,12 +22,63 @@ class Tourist extends AuthUser
     private $languages = array();
 
 
-
-
-
-    public function login()
+    public function getFirstName()
     {
-        return "Value is: " . $_COOKIE['id'];;
+        return $this->first_name;
+    }
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function getGender()
+    {
+        return $this->gender;
+    }
+    public function getContactNumber()
+    {
+        return $this->contact_number;
+    }
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+
+
+    public function login($email, $password)
+    {
+        $DB = new DBConnector("guideme");
+        $con = $DB->getConnection();
+
+        $query = "SELECT password from tourist where email=?";
+
+        $statement = $con->prepare($query);
+
+        if (!empty($password) && !empty($email)) {
+            try {
+                $result = $statement->execute([$email]);
+                $res = $statement->fetch();
+                if ($res) {
+
+                    if ($res["password"] === $password) {
+                        $this->email = $email;
+                        echo "/";
+                    } else {
+                        echo "Incorrect Passowrd or Email.Try Again!";
+                    }
+                } else {
+                    echo "User Not Found! Please Register to continue.";
+                }
+            } catch (Error) {
+                echo $statement->errorInfo();
+            }
+        } else {
+            echo "Fill all feilds";
+        }
     }
 
 
@@ -51,10 +96,15 @@ class Tourist extends AuthUser
         if (!empty($name) && !empty($email)) {
             try {
                 $statement->execute([$name, $contact, $email, $password]);
-                
+                $this->first_name = $name;
+                $this->contact_number = $contact;
+                $this->email = $email;
+                echo "/";
             } catch (Error) {
                 echo $statement->errorInfo();
             }
+        } else {
+            echo "fill all feilds";
         }
     }
     public function giveRating()

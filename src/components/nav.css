@@ -19,6 +19,7 @@ img {
 .navbar-collapse {
   justify-content: space-around;
   z-index: 4;
+  padding: 24px;
 }
 .navbar-brand {
   width: 20%;
@@ -59,4 +60,10 @@ svg {
 .person {
   width: 20px;
   height: auto;
+}
+.search-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }

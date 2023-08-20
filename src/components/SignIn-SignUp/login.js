@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../SignIn-SignUp/login.css";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const TouristAuth = () => {
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [errormsg, setError] = useState();
 
@@ -13,11 +15,22 @@ const TouristAuth = () => {
     psw: "",
     conpsw: "",
   });
+  const [logdata, setLogData] = useState({
+    email: "",
+    psw: "",
+  });
 
   const handleChange = (e) => {
     const value = e.target.value;
     setData({
       ...data,
+      [e.target.name]: value,
+    });
+  };
+  const handleLoginChange = (e) => {
+    const value = e.target.value;
+    setLogData({
+      ...logdata,
       [e.target.name]: value,
     });
   };
@@ -31,7 +44,8 @@ const TouristAuth = () => {
         {
           params: { data: data, function: "register" },
           headers: {
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept", // this will allow all CORS requests
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept", // this will allow all CORS requests
             "Access-Control-Allow-Methods": "OPTIONS,POST,GET", // this states the allowed methods
             "Content-Type": "application/json", // this shows the expected content type
           },
@@ -40,6 +54,37 @@ const TouristAuth = () => {
       )
       .then((data) => {
         console.log(data);
+        if (data.data !== "/") {
+          setError(data.data);
+        } else {
+          navigate("/");
+        }
+      });
+  };
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        "http://localhost:80/guide_me/src/server/api/authcontroller.php?id=0",
+        {
+          params: { data: logdata, function: "login" },
+          headers: {
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept", // this will allow all CORS requests
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET", // this states the allowed methods
+            "Content-Type": "application/json", // this shows the expected content type
+          },
+        },
+        { withCredentials: false }
+      )
+      .then((data) => {
+        console.log(data);
+        if (data.data !== "/") {
+          setError(data.data);
+        } else {
+          navigate("/");
+        }
       });
   };
 
@@ -55,7 +100,14 @@ const TouristAuth = () => {
           <div className="container auth">
             <div className="container left">
               <h1>SIGN IN</h1>
-              <form className="auth-form">
+              <form className="auth-form" onSubmit={handleLoginSubmit}>
+                {errormsg != null ? (
+                  <div class="alert alert-danger w-100" role="alert">
+                    {errormsg}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className="form-group lft">
                   <label for="exampleInputEmail1">Email address</label>
                   <input
@@ -64,6 +116,9 @@ const TouristAuth = () => {
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
+                    name="email"
+                    onChange={handleLoginChange}
+                    value={logdata.email}
                   />
                 </div>
                 <div className="form-group lft">
@@ -73,6 +128,9 @@ const TouristAuth = () => {
                     className="form-control"
                     id="exampleInputPassword1"
                     placeholder="Password"
+                    name="psw"
+                    onChange={handleLoginChange}
+                    value={logdata.psw}
                   />
                 </div>
                 <a href="#">Forgot your passward?</a>
@@ -102,6 +160,13 @@ const TouristAuth = () => {
             <div className="container left">
               <h1>Create Accout</h1>
               <form className="auth-form" onSubmit={handleRegisterSubmit}>
+                {errormsg != null ? (
+                  <div class="alert alert-danger w-100" role="alert">
+                    {errormsg}
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className="form-group lft">
                   <label for="exampleInputEmail1">Name</label>
                   <input
@@ -133,7 +198,7 @@ const TouristAuth = () => {
                     className="form-control"
                     name="contact"
                     aria-describedby="emailHelp"
-                    placeholder="Enter email"
+                    placeholder="Contact"
                     onChange={handleChange}
                     value={data.contact}
                   />

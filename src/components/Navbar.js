@@ -46,7 +46,7 @@ const NavBar = () => {
             </a>
           </li>
         </ul>
-        <ul className="navbar-nav mr-auto">
+        <ul className="navbar-nav mr-auto search-div">
           <li className="nav-item">
             <div className="d-flex flex-row align-items-center px-2 searchcon">
               <input

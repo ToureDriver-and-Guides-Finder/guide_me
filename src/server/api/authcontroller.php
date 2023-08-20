@@ -26,23 +26,18 @@ $data = json_decode($request_body, true);
 $tauth = new Tourist();
 switch ($data["params"]["function"]) {
     case "register":
-
         $name = $data["params"]["data"]["name"];
         $contact = $data["params"]["data"]["contact"];
         $email = $data["params"]["data"]["email"];
         $psw = $data["params"]["data"]["psw"];
-        setcookie("Auction_Item", "Luxury Car", time() + 2 * 24 * 60 * 60);
-
-        if (isset($_COOKIE["Auction_Item"])) {
-            echo "Auction Item is a  " . $_COOKIE["Auction_Item"];
-        } else {
-            echo "No items for auction.";
-        }
 
         echo $tauth->register($name, $email, $contact, $psw);
-        break;
+
     case "login":
-        $tauth->login();
+        $email = $data["params"]["data"]["email"];
+        $psw = $data["params"]["data"]["psw"];
+        echo $tauth->login($email, $psw);
+        break;
     default:
         echo "default";
 }

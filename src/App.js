@@ -16,32 +16,31 @@ import SignUp from "./components/SignIn-SignUp/SigninUp";
 import TouristAuth from "./components/SignIn-SignUp/login";
 import axios from "axios";
 import TourMain from "./pages/Tour";
+import DestinationsCategory from "./pages/DestinationsCategory";
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
   // axios.defaults.headers.post["Content-Type"] = "application/json";
   // axios.defaults.withCredentials = true;
   // axios.defaults.crossDomain = true;
-  const [auth,setAuth]=useState(true);
+  const [auth, setAuth] = useState(false);
   return (
-
-    
     <div>
-      {auth?<div><NavBar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/gig" element={<Form />} />
-          <Route path="/tour" element={<TourMain />} />
-          
-        </Routes>
-      </BrowserRouter>
       
-      <Footer /></div>:<TouristAuth/>}
-      
-    
-   
+          <NavBar />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/destinations" element={<Destinations />} />
+              <Route path="/gig" element={<Form />} />
+              <Route path="/tour" element={<TourMain />} />
+              <Route path="/destination-category" element={<DestinationsCategory />} />
+              <Route path="/login" element={<TouristAuth />} />
+            </Routes>
+          </BrowserRouter>
+
+          <Footer />
+        
       
     </div>
   );

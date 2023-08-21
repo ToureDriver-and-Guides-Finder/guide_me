@@ -17,6 +17,8 @@ import TouristAuth from "./components/SignIn-SignUp/login";
 import axios from "axios";
 import TourMain from "./pages/Tour";
 import DestinationsCategory from "./pages/DestinationsCategory";
+import Profile from "./pages/Profile";
+import ContactUs from "./pages/ContactUs";
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
               <Route path="/gig" element={<Form />} />
               <Route path="/tour" element={<TourMain />} />
               <Route path="/destination-category" element={<DestinationsCategory />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/contact" element={<ContactUs />} />
               <Route path="/login" element={<TouristAuth />} />
             </Routes>
           </BrowserRouter>

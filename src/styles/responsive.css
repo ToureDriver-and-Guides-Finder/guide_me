@@ -139,9 +139,9 @@
     left: -650px;
     width: 30%;
   }
-  .bg-light {
+  /* .bg-light {
     height: 115px;
-  }
+  } */
   .banner_taital {
     font-size: 28px;
   }
@@ -273,9 +273,9 @@
     padding-left: 15px;
   }
 
-  .bg-light {
+  /* .bg-light {
     height: auto;
-  }
+  } */
   .banner_taital {
     font-size: 20px;
     padding-top: 40px;
@@ -405,9 +405,9 @@
   }
 
   /* .navbar-toggler { background-color: #fff; } */
-  .bg-light {
+  /* .bg-light {
     height: auto;
-  }
+  } */
   .banner_bg {
     background-size: cover;
     height: auto;
@@ -575,13 +575,13 @@
     padding-bottom: 0px;
   }
   /* .navbar-toggler { background-color: #fff; } */
-  .bg-light {
+  /* .bg-light {
     height: auto;
-  }
+  } */
   .banner_bg {
     background-size: cover;
     height: auto;
-    background: #02d163;
+    /* background: #02d163; */
     padding-bottom: 20px;
   }
   .banner_taital {

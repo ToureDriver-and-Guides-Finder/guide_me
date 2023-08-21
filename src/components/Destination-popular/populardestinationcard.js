@@ -16,14 +16,9 @@ const PolularDestinationCard = (props) => {
       <div class="d-flex align-items-center justify-content-between">
         <h5 className="card-title p-title">{props.props["name"]}</h5>
 
-        
-          <i
-            class="fs-5 bi bi-suit-heart m-2 "
-            data-toggle="i"
-            aria-pressed="false"
-            autocomplete="off"
-          ></i>
-       
+        <button className="btn icon-button" type="submit">
+          <i class="fs-5 bi bi-suit-heart m-2 "></i>
+        </button>
       </div>
     </div>
   );

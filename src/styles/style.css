@@ -37,7 +37,7 @@ h4,
 h5,
 h6 {
      letter-spacing: 0;
-     font-weight: normal;
+     /* font-weight: 800; */
      position: relative;
      padding: 0 0 10px 0;
      font-weight: normal;
@@ -164,10 +164,7 @@ button {
     color: #ffffff;
     font-size: 18px;
 }
-.bg-light {
-    background-color: #303137 !important;
-    height: 155px;
-}
+
 
 .banner_section{
      width: 100%;

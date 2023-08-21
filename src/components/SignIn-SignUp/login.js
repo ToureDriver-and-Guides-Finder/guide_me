@@ -52,11 +52,12 @@ const TouristAuth = () => {
         },
         { withCredentials: false }
       )
-      .then((data) => {
-        console.log(data);
-        if (data.data !== "/") {
-          setError(data.data);
+      .then((user_data) => {
+        console.log(user_data);
+        if (user_data.data !== "/") {
+          setError(user_data.data);
         } else {
+          document.cookie = "user_id=" + data["email"];
           navigate("/");
         }
       });
@@ -83,6 +84,7 @@ const TouristAuth = () => {
         if (data.data !== "/") {
           setError(data.data);
         } else {
+          document.cookie = "user_id=" + logdata["email"];
           navigate("/");
         }
       });

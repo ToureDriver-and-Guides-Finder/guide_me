@@ -1,0 +1,24 @@
+.dc-img {
+  height: 60vh;
+  object-fit: cover;
+}
+
+.dc-card{
+    max-width: 720px;
+    width: 60%;
+}
+.dc-card>.card-img-top{
+    max-width: 60%;
+}
+.dc-card{
+    width: 100%;
+    flex-direction: row;
+}
+@media only screen and (max-width: 550px) {
+    .dc-card{
+        flex-direction: column;
+    }
+    .dc-card>.card-img-top{
+    max-width: 100%;
+}
+}

@@ -66,6 +66,23 @@ class Destination
         $arr = json_encode($result);
         print_r($arr);
     }
+    public function addToFav($category)
+    {
+
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * from destination where category= ? ;";
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$category]);
+
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // echo $result;
+        $arr = json_encode($result);
+        print_r($arr);
+    }
 }
 
 // $des=new Destination();

@@ -13,7 +13,20 @@
 .p-title {
   padding: 12px;
 }
-
+/* .fav-icon{
+  color: white;
+} */
+.icon-button{
+  /* background-color: #00587a; */
+  min-width: min-content;
+  margin: 0;
+  padding: 0;
+  width: min-content;
+}
+.icon-button:hover{
+  /* background-color: #00587a; */
+  border: none;
+}
 .load-more:hover {
   /* display: none; */
   background-color: #00587a;

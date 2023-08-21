@@ -41,8 +41,8 @@ const NavBar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              AboutUs
+            <a className="nav-link text-white" href="/contact">
+              ContactUs
             </a>
           </li>
         </ul>
@@ -59,7 +59,7 @@ const NavBar = () => {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/profile">
               <PersonCircle className="p-0 person" />
             </a>
           </li>

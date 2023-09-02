@@ -38,7 +38,7 @@ class Destination
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
 
-        $query = "SELECT * from destination LIMIT 10;";
+        $query = "SELECT * from destination;";
         $statement = $con->prepare($query);
 
         $res = $statement->execute();
@@ -83,7 +83,27 @@ class Destination
         $arr = json_encode($result);
         print_r($arr);
     }
+
+    public function getDestinationByID($id){
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * from destination where destination_id = ? ;";
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$id]);
+
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $arr = json_encode($result);
+        print_r($arr);
+
+    }
+   
 }
+
+
 
 // $des=new Destination();
 // $des->getAllDestinations();

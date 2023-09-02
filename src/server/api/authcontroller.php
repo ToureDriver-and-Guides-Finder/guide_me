@@ -1,4 +1,7 @@
 <?php
+
+use auth\AuthUser;
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 header("Access-Control-Allow-Methods: *");
@@ -32,11 +35,14 @@ switch ($data["params"]["function"]) {
         $psw = $data["params"]["data"]["psw"];
 
         echo $tauth->register($name, $email, $contact, $psw);
+        
 
     case "login":
         $email = $data["params"]["data"]["email"];
         $psw = $data["params"]["data"]["psw"];
         echo $tauth->login($email, $psw);
+        $auth = new AuthUser();
+        $auth->getUserID();
         break;
     default:
         echo "default";

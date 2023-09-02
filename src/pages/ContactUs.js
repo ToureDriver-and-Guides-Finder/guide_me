@@ -80,7 +80,7 @@ const ContactUs = () => {
                   required
                 ></textarea>
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           ) : (
             <div className="submitted-message">
@@ -90,7 +90,7 @@ const ContactUs = () => {
           )}
         </div>
       </div>
-      <div className="contact-info-container">
+      {/* <div className="contact-info-container">
         <div className="contact-info-box">
           <div className="contact-info-icon">
             <PhoneFill className="contact-icon" />
@@ -107,7 +107,7 @@ const ContactUs = () => {
             <p>Email: guideme@gmail.com</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="social-info-box">
         <div className="social-icon">

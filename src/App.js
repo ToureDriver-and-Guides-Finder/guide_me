@@ -19,6 +19,8 @@ import TourMain from "./pages/Tour";
 import DestinationsCategory from "./pages/DestinationsCategory";
 import Profile from "./pages/Profile";
 import ContactUs from "./pages/ContactUs";
+import PageNotFound from "./pages/404";
+import DestinationDetail from "./components/Destination-ShowDetails/distinationDetails";
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
@@ -28,24 +30,26 @@ function App() {
   const [auth, setAuth] = useState(false);
   return (
     <div>
-      
-          <NavBar />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/destinations" element={<Destinations />} />
-              <Route path="/gig" element={<Form />} />
-              <Route path="/tour" element={<TourMain />} />
-              <Route path="/destination-category" element={<DestinationsCategory />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/login" element={<TouristAuth />} />
-            </Routes>
-          </BrowserRouter>
+      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/gig" element={<Form />} />
+          <Route path="/tour" element={<TourMain />} />
+          <Route
+            path="/destination-category"
+            element={<DestinationsCategory />}
+          />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/destination_details" element={<DestinationDetail />} />
+          <Route path="/login" element={<TouristAuth />} />
+        </Routes>
+      </BrowserRouter>
 
-          <Footer />
-        
-      
+      <Footer />
     </div>
   );
 }

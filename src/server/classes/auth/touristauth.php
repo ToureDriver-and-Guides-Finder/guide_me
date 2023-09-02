@@ -66,6 +66,7 @@ class Tourist extends AuthUser
 
                     if ($res["password"] === $password) {
                         $this->email = $email;
+                        $auth = new AuthUser();
                         echo "/";
                     } else {
                         echo "Incorrect Passowrd or Email.Try Again!";
@@ -99,6 +100,7 @@ class Tourist extends AuthUser
                 $this->first_name = $name;
                 $this->contact_number = $contact;
                 $this->email = $email;
+                $auth = new AuthUser();
                 echo "/";
             } catch (Error) {
                 echo $statement->errorInfo();

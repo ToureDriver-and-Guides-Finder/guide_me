@@ -34,7 +34,7 @@ const TourMain = () => {
                         </p>
                         <div className="btn_main">
                           <div className="about_us">
-                            <a href="#">About Us</a>
+                            <a href="/gig">PLAN YOUR TRIP</a>
                           </div>
                         </div>
                       </div>
@@ -59,7 +59,7 @@ const TourMain = () => {
                         </p>
                         <div className="btn_main">
                           <div className="about_us">
-                            <a href="#">About Us</a>
+                            <a href="/gig">PLAN YOUR TRIP</a>
                           </div>
                         </div>
                       </div>

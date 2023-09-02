@@ -7,21 +7,22 @@ const CreateTour = () => {
       <div className="left-con">
         <img src={BGImage} className="bgimg-2" />
         <h1 className="text-overlay">
-          Your Gateway to<br></br> Personalized Travel:<br></br> Connect, Explore,<br></br> Experience!
+          Your Gateway to<br></br> Personalized Travel:<br></br> Connect,
+          Explore,<br></br> Experience!
         </h1>
       </div>
       <div className="right-con">
         <p className="para">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          malesuada dolor et ultrices semper. Cras interdum sed augue et
-          ullamcorper. Proin egestas bibendum interdum. In mi urna, tincidunt
-          sit amet elementum aliquet, malesuada quis erat. Nulla sit amet erat
-          vitae massa mattis posuere. Sed viverra cursus est vel ultrices. Etiam
-          fringilla interdum velit quis feugiat.
+          Guide Me is a tour guiding website that serves as your personalized
+          travel gateway. It facilitates connections with local experts, offers
+          curated exploration options, and ensures travelers have memorable
+          experiences tailored to their interests and preferences. With Guide
+          Me, you can connect, explore, and experience your chosen destination
+          in a uniquely customized way.
         </p>
-        <button type="button" className="btn btn-primary tour-btn">
+        <a href="/tour" className="btn btn-primary tour-btn">
           Create Tour Package
-        </button>
+        </a>
       </div>
     </div>
   );

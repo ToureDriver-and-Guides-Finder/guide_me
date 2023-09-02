@@ -14,10 +14,12 @@ const DestinationCategory = () => {
         </div>
         <div className="col-5">
           <p className="para">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex
+            Discover your ideal travel destination effortlessly with 'Browse
+            Destinations by Category' on Guide Me. Our user-friendly feature
+            categorizes destinations based on your interests, allowing you to
+            explore and choose the perfect spot for your next adventure, whether
+            you're into culture, adventure, nature, or relaxation. Start your
+            journey with ease and excitement, guided by your passions.
           </p>
         </div>
       </div>

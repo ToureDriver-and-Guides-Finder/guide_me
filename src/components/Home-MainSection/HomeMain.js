@@ -12,12 +12,12 @@ const HomeMain = () => {
           <h5 className="sub-topic">Guides And Drivers.</h5>
         </div>
         <div className="btn-div">
-          <button type="button" className="btn btn-primary">
+          <a className="btn btn-primary" href="/tour">
             Create Tour Package
-          </button>
-          <button type="button" className="btn btn-outline-primary">
+          </a>
+          <a className="btn btn-outline-primary" href="/destination">
             Find Best Places
-          </button>
+          </a>
         </div>
       </div>
     </div>

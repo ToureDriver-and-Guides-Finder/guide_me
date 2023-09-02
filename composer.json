@@ -1,0 +1,17 @@
+{
+    "name": "sasit/guide_me",
+    "require": {
+        "amphp/react-adapter": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sasit\\GuideMe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sasith MJ",
+            "email": "sasithmjayaweera@gmail.com"
+        }
+    ]
+}

@@ -6,6 +6,7 @@ import axios from "axios";
 
 const Destinations = () => {
   const [des_data, setData] = useState([]);
+
   useEffect(() => {
     axios
       .get(
@@ -15,7 +16,7 @@ const Destinations = () => {
         }
       )
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         setData(data.data);
       });
   }, []);
@@ -31,10 +32,17 @@ const Destinations = () => {
       <div className="container mt-5">
         <div className="row justify-content-center g-5 p-card-row">
           {des_data.length != 0 ? (
-            des_data.map((data) => (
+            des_data.map((data, key) => (
               <div className="col-3">
                 <PolularDestinationCard
-                  props={{ name: data["name"], des: data["description"] }}
+                  props={{
+                    name: data["name"],
+                    des: data["description"],
+                    desId: data["destination_id"],
+                    image: data["image"],
+                    key:key
+                  }}
+                  key={key}
                 />
               </div>
             ))

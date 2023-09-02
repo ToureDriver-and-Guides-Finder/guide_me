@@ -15,14 +15,7 @@ parse_str($url_components['query'], $params);
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body, true);
 
-// $tourid = $_POST["options"];
-
 $tour = new Tour();
 
-echo $data["params"]["des_id"];
 
-if ($data["params"]["function"] === "addToFav") {
-    echo $tour->addToFav($data["params"]["tour_id"], $data["params"]["des_id"], $data["params"]["user_id"]);
-} else {
-    echo $tour->createTour($data["params"]["tourname"], $data["params"]["userId"]);
-}
+echo $tour->getUserTour($data["params"]["userId"]);

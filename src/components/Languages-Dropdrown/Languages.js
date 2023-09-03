@@ -1,17 +1,20 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LanguageDropdown = () => {
   const [language, setLanguage] = useState([]);
-  axios.get("languages.json").then((data) => {
-    // console.log(data);
-    setLanguage(data.data);
-  });
-//   console.log(language);
+  useEffect(() => {
+    axios.get("languages.json").then((data) => {
+      // console.log(data);
+      setLanguage(data.data);
+    });
+  }, []);
+
+  //   console.log(language);
   return (
-    <select id="lan">
-      {language.map((data) => (
-        <option value={data["name"]}>{data["name"]}</option>
+    <select id="lan" name="language">
+      {language.map((data,key) => (
+        <option value={data["name"]} key={key}>{data["name"]}</option>
       ))}
 
       {/* Add other options */}

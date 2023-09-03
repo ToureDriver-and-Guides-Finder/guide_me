@@ -5,7 +5,6 @@ import "../components/nav.css";
 import { PersonCircle, Search } from "react-bootstrap-icons";
 const NavBar = () => {
   return (
-    
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <a className="navbar-brand" href="/">
         <img src={Logo} className="nav" />
@@ -36,7 +35,7 @@ const NavBar = () => {
           </li>
 
           <li className="nav-item ">
-            <a className="nav-link text-white" href="#">
+            <a className="nav-link text-white" href="/aboutus">
               AboutUs
             </a>
           </li>

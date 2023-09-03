@@ -21,6 +21,7 @@ import Profile from "./pages/Profile";
 import ContactUs from "./pages/ContactUs";
 import PageNotFound from "./pages/404";
 import DestinationDetail from "./components/Destination-ShowDetails/distinationDetails";
+import AboutUs from "./components/aboutus/aboutus";
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/destination_details" element={<DestinationDetail />} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/login" element={<TouristAuth />} />
         </Routes>
       </BrowserRouter>

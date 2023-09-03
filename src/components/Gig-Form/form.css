@@ -26,7 +26,6 @@
   top: 0;
   width: 100%;
   background-size: cover;
-
 }
 /* Global Stylings */
 label {
@@ -42,12 +41,12 @@ input {
   border-radius: 0.25rem;
 }
 
-select{
-      display: block;
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
+select {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
 }
 
 /* .input-group .single-checkbox {
@@ -65,35 +64,35 @@ margin-left: 5px;
 } */
 
 .input-group .single-checkbox {
-display: flex;
-flex-direction: row;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .input-group .single-checkbox label {
-margin-bottom: 0;
-margin-left: 0.5rem;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
 }
 
 .input-group fieldset {
-display: flex;
-flex-wrap: wrap;
-align-items: center;
-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 .input-group label {
-/* flex: 1; */
-margin-right: 12px;
-display: flex;
-align-items: center;
+  /* flex: 1; */
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
 }
 .input-group input[type="checkbox"] {
-margin-right: 5px;
-} 
+  margin-right: 5px;
+}
 
 .input-group .single-checkbox label {
-margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* CSS */
@@ -101,14 +100,14 @@ margin-right: 10px;
 
 /* Add new CSS for gender input layout */
 .input-group .gender-inputs {
-display: flex;
-align-items: center;
-margin-right: 10px;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  justify-content: center;
 }
 
 .input-group .gender-inputs label {
-margin-right: 12px;
+  margin-right: 12px;
 }
 
 .width-50 {
@@ -127,7 +126,7 @@ margin-right: 12px;
 .progressbar {
   position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   counter-reset: step;
   margin: 2rem 0 4rem;
 }
@@ -222,8 +221,8 @@ margin-right: 12px;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
-.btns-group>.btn{
-  min-width: auto;
+.btns-group > .btn {
+  min-width: 100px;
 }
 .fbtn {
   padding: 0.75rem;
@@ -238,4 +237,15 @@ margin-right: 12px;
 }
 .btn:hover {
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+
+@media only screen and (max-width: 550px) {
+  .form-con {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .form-con {
+    width: 90%;
+  }
 }

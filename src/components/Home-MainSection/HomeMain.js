@@ -15,7 +15,7 @@ const HomeMain = () => {
           <a className="btn btn-primary" href="/tour">
             Create Tour Package
           </a>
-          <a className="btn btn-outline-primary" href="/destination">
+          <a className="btn btn-outline-primary" href="/destinations">
             Find Best Places
           </a>
         </div>

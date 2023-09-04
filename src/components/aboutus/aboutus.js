@@ -49,9 +49,102 @@ const AboutUs = () => {
           <span class="sr-only">Next</span>
         </a>
       </div>
-      
+
       <div class="container marketing">
         <div class="row">
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#00597b" />
+              <image
+                href="https://firebasestorage.googleapis.com/v0/b/guideme-378af.appspot.com/o/profile%2FPicsart_23-07-24_23-16-27-367.jpg?alt=media&token=dd6cce57-f65e-4be1-be91-3e58492d8a8d"
+                width="100%"
+                height="100%"
+              />
+            </svg>
+
+            <h2>Explorer</h2>
+            <p>
+              David is a seasoned traveler who uses "Guide Me" to share her
+              travel stories, tips, and itineraries with fellow travelers. She
+              provides valuable insights into off-the-beaten-path destinations.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#">
+                Join with Us &raquo;
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#00597b" />
+              <image
+                href="https://firebasestorage.googleapis.com/v0/b/guideme-378af.appspot.com/o/profile%2F300764600_188266100284062_4020442852664725908_n.jpg?alt=media&token=13c7b827-83ec-4e6c-9090-76b75087b17e"
+                width="100%"
+                height="100%"
+              />
+            </svg>
+
+            <h2>Explorer</h2>
+            <p>
+              David is a seasoned traveler who uses "Guide Me" to share her
+              travel stories, tips, and itineraries with fellow travelers. She
+              provides valuable insights into off-the-beaten-path destinations.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#">
+                Join with Us &raquo;
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-4">
+            <svg
+              class="bd-placeholder-img rounded-circle"
+              width="140"
+              height="140"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder: 140x140"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#00597b" />
+              <image
+                href="https://firebasestorage.googleapis.com/v0/b/guideme-378af.appspot.com/o/profile%2FPXL_20230222_114153658.jpg?alt=media&token=03d35b8c-3846-4044-b519-99c5c3005729"
+                width="100%"
+                height="100%"
+              />
+            </svg>
+
+            <h2>Explorer</h2>
+            <p>
+              David is a seasoned traveler who uses "Guide Me" to share her
+              travel stories, tips, and itineraries with fellow travelers. She
+              provides valuable insights into off-the-beaten-path destinations.
+            </p>
+            <p>
+              <a class="btn btn-secondary" href="#">
+                Join with Us &raquo;
+              </a>
+            </p>
+          </div>
           <div class="col-lg-4">
             <svg
               class="bd-placeholder-img rounded-circle"

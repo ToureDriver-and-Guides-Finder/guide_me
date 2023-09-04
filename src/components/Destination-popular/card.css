@@ -1,5 +1,6 @@
 .p-card {
   position: relative;
+  /* min-width: 150px; */
 }
 .p-text-div {
   position: absolute;

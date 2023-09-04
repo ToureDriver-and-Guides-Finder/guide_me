@@ -6,6 +6,7 @@ import PolularDestinationCard from "../Destination-popular/populardestinationcar
 
 const DestinationDetail = () => {
   const [desdata, setData] = useState([]);
+  const [similardesdata, setSimilarData] = useState([]);
   useEffect(() => {
     let urlstring = window.location.href;
     var url = new URL(urlstring);
@@ -22,6 +23,17 @@ const DestinationDetail = () => {
       .then((data) => {
         console.log(data.data);
         setData(data.data);
+        axios
+          .post(
+            "http://localhost:80/guide_me/src/server/api/getDestinationCategory.php?id=0",
+            {
+              params: { id: data.data.category },
+            }
+          )
+          .then((data) => {
+            console.log(data.data);
+            setSimilarData(data.data);
+          });
       });
   }, []);
   console.log(desdata);
@@ -40,19 +52,19 @@ const DestinationDetail = () => {
         <div class="single-pro-details">
           <div className="row ">
             <div className="col">
-              <h6> By Smile Organic Farm Cooking School</h6>
+              <h6> {desdata.description}</h6>
             </div>
             <div className="col d-flex justify-content-end">
               {/* <AddToFav /> */}
             </div>
           </div>
 
-          <h4>{desdata.name}</h4>
-          <h6>{desdata.city}</h6>
+          <h2 className="fw-bold">{desdata.name}</h2>
+          <h5 className="font-weight-light">{desdata.city}</h5>
           {/* <h2>$139.00</h2>
           <input type="number" value="1" /> */}
 
-          <h4>Destination details</h4>
+          <h5 className="mt-4">Destination details</h5>
           <span>{desdata.description_full}</span>
         </div>
       </section>
@@ -60,14 +72,36 @@ const DestinationDetail = () => {
         <h2>Similar experiences</h2>
         <p>Take what you want</p>
         <div class="pro-container">
-          {/* <PolularDestinationCard /> */}
+          <div className="container mt-5">
+            <div className="row justify-content-center g-5 p-card-row">
+              {similardesdata.length != 0 ? (
+                similardesdata.map((data, key) => (
+                  <div className="col-3">
+                    <PolularDestinationCard
+                      props={{
+                        name: data["name"],
+                        des: data["description"],
+                        desId: data["destination_id"],
+                        image: data["image"],
+                        key: key,
+                      }}
+                      key={key}
+                    />
+                  </div>
+                ))
+              ) : (
+                <>No data found</>
+              )}
+            </div>
+            <center>
+              <button className="btn btn-outline-primary load-more mt-4">
+                See more
+              </button>
+            </center>
+          </div>
         </div>
 
-        <center>
-          <button className="btn btn-outline-primary load-more mt-4">
-            See more
-          </button>
-        </center>
+        
       </section>
       <section id="review">
         <div class="wrapper">

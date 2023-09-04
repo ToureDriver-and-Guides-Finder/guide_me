@@ -2,9 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Profile = () => {
-  
   const [alldata, setAllData] = useState([]);
-  
 
   function getCookie(cname) {
     let name = cname + "=";
@@ -23,18 +21,20 @@ const Profile = () => {
   }
   useEffect(() => {
     axios
-      .post("http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0", {
-        params: {
-          // id: props.props,
-          userId: getCookie("user_id"),
-        },
-      })
+      .post(
+        "http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0",
+        {
+          params: {
+            // id: props.props,
+            userId: getCookie("user_id"),
+          },
+        }
+      )
       .then((data) => {
         console.log(data.data);
         setAllData(data.data);
       });
   }, []);
-
 
   return (
     <section style={{ backgroundColor: "#eee" }}>
@@ -66,14 +66,18 @@ const Profile = () => {
                 />
                 <h5 className="my-3">{alldata.tourist_name}</h5>
                 <p className="text-muted mb-1">{alldata.country}</p>
-                {/* <div className="d-flex justify-content-center mb-2 flex-column align-items-center">
-                  <button type="button" className="btn btn-primary m-0 mb-2">
-                    Message
-                  </button>
-                  <button type="button" className="btn btn-outline-primary m-0">
+                <div className="d-flex justify-content-center mb-2 flex-column align-items-center">
+                  <a
+                    type="button"
+                    className="btn btn-primary m-0 mb-2"
+                    href="/login"
+                  >
+                    Login
+                  </a>
+                  {/* <button type="button" className="btn btn-outline-primary m-0">
                     More details
-                  </button>
-                </div> */}
+                  </button> */}
+                </div>
               </div>
             </div>
             {/* <div className="card mb-4 mb-lg-0">

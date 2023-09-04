@@ -4,10 +4,12 @@
   background-color: antiquewhite;
   position: relative;
   z-index: 2;
+  overflow: hidden;
 }
 
 img {
   object-fit: cover;
+  
 }
 
 .text-div {

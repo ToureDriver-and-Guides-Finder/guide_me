@@ -1,4 +1,41 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const Profile = () => {
+  
+  const [alldata, setAllData] = useState([]);
+  
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  useEffect(() => {
+    axios
+      .post("http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0", {
+        params: {
+          // id: props.props,
+          userId: getCookie("user_id"),
+        },
+      })
+      .then((data) => {
+        console.log(data.data);
+        setAllData(data.data);
+      });
+  }, []);
+
+
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <div className="container py-5">
@@ -27,22 +64,19 @@ const Profile = () => {
                   className="rounded-circle img-fluid"
                   style={{ width: "150px" }}
                 />
-                <h5 className="my-3">John Smith</h5>
-                <p className="text-muted mb-1">Canada</p>
-                <div className="d-flex justify-content-center mb-2 flex-column align-items-center">
+                <h5 className="my-3">{alldata.tourist_name}</h5>
+                <p className="text-muted mb-1">{alldata.country}</p>
+                {/* <div className="d-flex justify-content-center mb-2 flex-column align-items-center">
                   <button type="button" className="btn btn-primary m-0 mb-2">
                     Message
                   </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary m-0"
-                  >
+                  <button type="button" className="btn btn-outline-primary m-0">
                     More details
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
-            <div className="card mb-4 mb-lg-0">
+            {/* <div className="card mb-4 mb-lg-0">
               <div className="card-body p-0">
                 <ul className="list-group list-group-flush rounded-3">
                   <li className="list-group-item d-flex justify-content-between align-items-center p-3">
@@ -67,7 +101,7 @@ const Profile = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="col-lg-8">
             <div className="card mb-4">
@@ -77,7 +111,7 @@ const Profile = () => {
                     <p className="mb-0">Full Name</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">Johnatan Smith</p>
+                    <p className="text-muted mb-0">{alldata.tourist_name}</p>
                   </div>
                 </div>
                 <hr />
@@ -86,7 +120,7 @@ const Profile = () => {
                     <p className="mb-0">Email</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">example@example.com</p>
+                    <p className="text-muted mb-0">{alldata.email}</p>
                   </div>
                 </div>
                 <hr />
@@ -95,7 +129,7 @@ const Profile = () => {
                     <p className="mb-0">Country</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">Canada</p>
+                    <p className="text-muted mb-0">{alldata.country}</p>
                   </div>
                 </div>
                 <hr />
@@ -104,7 +138,7 @@ const Profile = () => {
                     <p className="mb-0">Mobile</p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">(098) 765-4321</p>
+                    <p className="text-muted mb-0">{alldata.contact_number}</p>
                   </div>
                 </div>
                 <hr />

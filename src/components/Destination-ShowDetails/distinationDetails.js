@@ -71,7 +71,7 @@ const DestinationDetail = () => {
       </section>
       <section id="review">
         <div class="wrapper">
-          <h3>Lorem ipsum dolor sit amet.</h3>
+          <h3>Write a Review</h3>
           <form action="#">
             <div class="rating">
               <input type="number" name="rating" hidden />

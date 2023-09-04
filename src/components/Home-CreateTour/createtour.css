@@ -19,6 +19,7 @@
   width: 100%;
   position: relative;
   flex: 1;
+  
 }
 .bgimg-2 {
   object-fit: cover;
@@ -32,6 +33,7 @@
   color: white;
   flex: 1;
   line-height: 3;
+  
 }
 .text-overlay {
   position: absolute;
@@ -43,7 +45,7 @@
   left: 10%;
 }
 .para{
-  font-size: 1.5vw;
+  font-size: 1vw;
   line-height: 1.5;
   letter-spacing: 2px;
 }

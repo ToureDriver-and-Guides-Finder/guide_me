@@ -20,11 +20,14 @@ $data = json_decode($request_body, true);
 $tour = new Tour();
 
 // echo $data["params"]["des_id"];
-echo $data["params"]["data"];
-$name = $data["params"]["data"]["name"];
-$contact = $data["params"]["data"]["contact"];
+// echo $data["params"]["data"];
+$name = $data["params"]["data"]["fname"];
+$contact = $data["params"]["data"]["contactNo"];
 $email = $data["params"]["data"]["email"];
-$psw = $data["params"]["data"]["psw"];
+$sdate = $data["params"]["data"]["startdate"];
+$fdate = $data["params"]["data"]["finishdate"];
+$no_of_passengers = $data["params"]["data"]["no_of_passengers"];
+$duration = $data["params"]["data"]["duration"];
 
 
-// echo $tour->addToFav($data["params"]["tour_id"], $data["params"]["des_id"], $data["params"]["user_id"]);
+echo $tour->updateTour($name, $email, $contact, $sdate, $fdate, $no_of_passengers, $duration);

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const AddToFav = (props) => {
+const AddNewTour = () => {
   // console.log(props.props);
+  const navigate = useNavigate();
   const [tourname, setTourName] = useState("");
   const [alltours, setAllTuors] = useState([]);
   const [newtour, setNewTour] = useState(false);
@@ -52,42 +54,42 @@ const AddToFav = (props) => {
 
   console.log(des_id);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
 
-    axios
-      .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
-        params: {
-          id: props.props["desId"],
-          tourname: tourname,
-          userId: getCookie("user_id"),
-          function: "create",
-        },
-      })
-      .then((data) => {
-        console.log(data.data);
-        //   setData(data.data);
-      });
-  };
+  //     axios
+  //       .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
+  //         params: {
+  //           id: props.props["desId"],
+  //           tourname: tourname,
+  //           userId: getCookie("user_id"),
+  //           function: "create",
+  //         },
+  //       })
+  //       .then((data) => {
+  //         console.log(data.data);
+  //         //   setData(data.data);
+  //       });
+  //   };
   // console.log(props.props);
 
-  const handleTourSubmit = (e, desID) => {
-    e.preventDefault();
-    console.log(des_id);
-    axios
-      .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
-        params: {
-          function: "addToFav",
-          des_id: desID,
-          user_id: getCookie("user_id"),
-          tour_id: displayRadioValue(),
-        },
-      })
-      .then((data) => {
-        console.log(data.data);
-        //   setData(data.data);
-      });
-  };
+  //   const handleTourSubmit = (e, desID) => {
+  //     e.preventDefault();
+  //     console.log(des_id);
+  //     axios
+  //       .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
+  //         params: {
+  //           function: "addToFav",
+  //           des_id: desID,
+  //           user_id: getCookie("user_id"),
+  //           tour_id: displayRadioValue(),
+  //         },
+  //       })
+  //       .then((data) => {
+  //         console.log(data.data);
+  //         //   setData(data.data);
+  //       });
+  //   };
 
   function displayRadioValue() {
     var ele = document.getElementsByName("options");
@@ -103,7 +105,7 @@ const AddToFav = (props) => {
 
   return (
     <>
-      <button
+      {/* <button
         className="btn icon-button"
         type="submit"
         data-toggle="modal"
@@ -112,7 +114,7 @@ const AddToFav = (props) => {
         onClick={handleClik}
       >
         <i class="fs-5 bi bi-suit-heart m-2 "></i>
-      </button>
+      </button> */}
       <div
         className="modal fade"
         id="exampleModalCenter"
@@ -168,9 +170,9 @@ const AddToFav = (props) => {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    id={props.props}
+                    // id={props.props}
                     onClick={(e) => {
-                      handleTourSubmit(e, des_id);
+                      navigate("/profile");
                     }}
                   >
                     Save Tour
@@ -187,7 +189,7 @@ const AddToFav = (props) => {
                 Close
               </button> */}
 
-              <form className="form-inline" onSubmit={handleSubmit}>
+              <form className="form-inline">
                 <div className="row">
                   <div className="col">
                     <input
@@ -222,4 +224,4 @@ const AddToFav = (props) => {
   );
 };
 
-export default AddToFav;
+export default AddNewTour;

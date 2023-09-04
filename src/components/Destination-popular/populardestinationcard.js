@@ -37,18 +37,19 @@ const PolularDestinationCard = (props) => {
   }, []);
 
   return (
-    <a href={"/destination_details?id=" + props.props["desId"]}>
+    
       <div
         className="card p-card"
         key={props.props["desId"]}
         id={props.props["desId"]}
-      >
+      ><a href={"/destination_details?id=" + props.props["desId"]}>
         <img
           className="card-img-top"
           src={props.props["image"]}
           alt="Card image cap"
           loading="lazy"
         />
+        </a>
         <div className="p-text-div">
           <p className="card-text p-text">{props.props["des"]}</p>
         </div>
@@ -71,7 +72,7 @@ const PolularDestinationCard = (props) => {
           )}
         </div>
       </div>
-    </a>
+    
   );
 };
 

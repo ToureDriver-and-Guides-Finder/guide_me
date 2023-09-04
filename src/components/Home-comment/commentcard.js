@@ -6,8 +6,10 @@ const CommentCard = () => {
       <div className="card-body c-card-body">
         <div className="c-card-body-comment">
           <h5 className="card-title">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            malesuada dolor et ultrices semper. Cras interdum sed{" "}
+            Unbelievable day. Being with the elephants was so surreal, you were
+            able to get really close to them. The trek to the waterfall was
+            tricky but rewarding. It was so cool. Great way to cool off after a
+            long hike.{" "}
           </h5>
           <div>
             <StarFill />

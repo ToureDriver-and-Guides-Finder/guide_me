@@ -28,4 +28,23 @@ class Tourist
             echo $e->getMessage();
         }
     }
+    public function getTouristData($email)
+    {
+        try {
+            $dbcon = new DBConnector("guideme");
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT * from tourist where email=?;";
+            $statement = $con->prepare($query);
+
+            $res = $statement->execute([$email]);
+
+
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $arr = json_encode($result);
+            print_r($arr);
+        } catch (ERROR $e) {
+            echo $e->getMessage();
+        }
+    }
 }

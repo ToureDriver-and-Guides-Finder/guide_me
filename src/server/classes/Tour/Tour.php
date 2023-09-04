@@ -18,8 +18,30 @@ class Tour
 
 
 
-    public function updateTour()
+    public function updateTour($fname, $email, $contact, $sdate, $fdate, $no_of_pass, $duration)
     {
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+        // $tourist = new Tourist();
+
+        // $t_id = $tourist->getTouristId("sasithmj@gmail.com");
+
+        // $query1 = "SELECT tourist_id from tourist where email=?;";
+        // $statement1 = $con->prepare($query1);
+
+        // $res = $statement1->execute([$email]);
+
+
+        // $result = $statement1->fetch(PDO::FETCH_ASSOC);
+        // $t_id = $result["tourist_id"];
+
+        $query = "Insert into tour (no_of_passengers,start_date,end_date) values(?,?,?);";
+
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$no_of_pass, $sdate, $fdate]);
+
+        echo $res;
     }
 
     public function createTour($tour_name, $email)

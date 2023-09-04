@@ -4,6 +4,7 @@ import LanguageDropdown from "../Languages-Dropdrown/Languages";
 import CountriesDropdown from "../countries-dropdown/Countries";
 import DistrictsDropdown from "../districts-dropdown/Districts";
 import axios from "axios";
+import AddNewTour from "../AddToFavModel/AddNewTour";
 
 export default function Form() {
   const [formStepsNum, setFormStepsNum] = useState(0);
@@ -28,6 +29,7 @@ export default function Form() {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://localhost:80/guide_me/src/server/api/addTour.php?id=0", {
         params: { data: data },
@@ -41,7 +43,9 @@ export default function Form() {
         //   navigate("/");
         // }
       });
+    // console.log("ok");
   };
+  console.log(data);
 
   const getCountry = () => {
     let doc = document.getElementById("country");
@@ -161,7 +165,7 @@ export default function Form() {
             <label htmlFor="sdate">Start Date</label>
             <input
               type={"date"}
-              name="s-date"
+              name="startdate"
               id="s-date"
               onChange={handleChange}
               value={data.startdate}
@@ -173,7 +177,7 @@ export default function Form() {
             <label htmlFor="fdate">Finish Date</label>
             <input
               type={"date"}
-              name="f-date"
+              name="finishdate"
               id="f-date"
               onChange={handleChange}
               value={data.finishdate}
@@ -200,8 +204,8 @@ export default function Form() {
           <label htmlFor="no">No of passengers</label>
           <div className="input-group">
             <input
-              type={"text"}
-              name="no"
+              type={"number"}
+              name="no_of_passengers"
               id="no"
               placeholder="No of Passengers"
               onChange={handleChange}
@@ -217,12 +221,14 @@ export default function Form() {
           Previous
         </button>
         <button
-          // onClick={() => handleNextStep()}
-          className="btn btn-next"
+          className="btn icon-button"
           type="submit"
+          data-toggle="modal"
+          data-target="#exampleModalCenter"
         >
           Next
         </button>
+        <AddNewTour/>
       </div>
     </div>,
     // Add more form steps as needed
@@ -326,7 +332,6 @@ export default function Form() {
   };
 
   const handlePrevStep = () => {
-    getCountry();
     setFormStepsNum((prev) => Math.max(prev - 1, 0));
   };
 

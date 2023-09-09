@@ -1,7 +1,10 @@
+import Footer from "../components/Footer";
+import NavBar from "../components/Navbar";
 import Sadpanda from "../images/12.png";
 const PageNotFound = () => {
   return (
     <>
+      <NavBar />
       <div className="p-5 bg-warning row">
         <div className="col align-items-start justify-content-center d-flex flex-column">
           <h1>:( </h1>
@@ -26,6 +29,7 @@ const PageNotFound = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

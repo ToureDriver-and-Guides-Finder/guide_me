@@ -37,42 +37,43 @@ const PolularDestinationCard = (props) => {
   }, []);
 
   return (
-    
-      <div
-        className="card p-card"
-        key={props.props["desId"]}
-        id={props.props["desId"]}
-      ><a href={"/destination_details?id=" + props.props["desId"]}>
+    <div
+      className="card p-card"
+      key={props.props["desId"]}
+      id={props.props["desId"]}
+    >
+      <a href={"/destination_details?id=" + props.props["desId"]}>
         <img
           className="card-img-top"
           src={props.props["image"]}
           alt="Card image cap"
           loading="lazy"
         />
-        </a>
-        <div className="p-text-div">
-          <p className="card-text p-text">{props.props["des"]}</p>
-        </div>
-        <div class="d-flex align-items-center justify-content-between">
-          <h5 className="card-title p-title">{props.props["name"]}</h5>
-          {cookie ? (
-            <div>
-              <AddToFav props={props.props["desId"]} key={props.props["key"]} />
-            </div>
-          ) : (
-            <button
-              className="btn icon-button"
-              type="submit"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              <i class="fs-5 bi bi-suit-heart m-2 "></i>
-            </button>
-          )}
-        </div>
+      </a>
+      <div className="p-text-div">
+        <p className="card-text p-text">{props.props["des"]}</p>
       </div>
-    
+      <div class="d-flex align-items-center justify-content-between">
+        <h5 className="card-title p-title text-truncate">
+          {props.props["name"]}
+        </h5>
+        {cookie ? (
+          <div>
+            <AddToFav props={props.props["desId"]} key={props.props["key"]} />
+          </div>
+        ) : (
+          <button
+            className="btn icon-button"
+            type="submit"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            <i class="fs-5 bi bi-suit-heart m-2 "></i>
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

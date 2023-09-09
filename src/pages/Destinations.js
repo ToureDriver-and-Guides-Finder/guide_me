@@ -3,9 +3,12 @@ import DestinationCategory from "../components/Home-Destination/destination";
 import "../components/Destination-popular/card.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Destinations = () => {
   const [des_data, setData] = useState([]);
+
 
   useEffect(() => {
     axios
@@ -16,13 +19,15 @@ const Destinations = () => {
         }
       )
       .then((data) => {
-        // console.log(data.data);
+        console.log(data.data);
         setData(data.data);
       });
   }, []);
+
   console.log(des_data);
   return (
     <div>
+      <NavBar />
       <div className="container mt-4">
         <h1 class="main-topic-main">Explore and Experience</h1>
         <h4 class="sub-topic">
@@ -40,7 +45,7 @@ const Destinations = () => {
                     des: data["description"],
                     desId: data["destination_id"],
                     image: data["image"],
-                    key:key
+                    key: key,
                   }}
                   key={key}
                 />
@@ -59,6 +64,7 @@ const Destinations = () => {
       {/* <div className="divide"></div> */}
 
       <DestinationCategory />
+      <Footer />
     </div>
   );
 };

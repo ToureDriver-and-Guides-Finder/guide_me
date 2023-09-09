@@ -18,7 +18,7 @@ class Tour
 
 
 
-    public function updateTour($fname, $email, $contact, $sdate, $fdate, $no_of_pass, $duration)
+    public function updateTour($fname, $email, $contact, $sdate, $fdate, $no_of_pass, $duration, $desdata, $tourid)
     {
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
@@ -35,11 +35,11 @@ class Tour
         // $result = $statement1->fetch(PDO::FETCH_ASSOC);
         // $t_id = $result["tourist_id"];
 
-        $query = "Insert into tour (no_of_passengers,start_date,end_date) values(?,?,?);";
+        $query = "UPDATE tour set no_of_passengers=?,start_date=?,end_date=?,locations=?,tour_status=?where tour_id=? ;";
 
         $statement = $con->prepare($query);
 
-        $res = $statement->execute([$no_of_pass, $sdate, $fdate]);
+        $res = $statement->execute([$no_of_pass, $sdate, $fdate, $desdata, "Available", $tourid]);
 
         echo $res;
     }
@@ -100,6 +100,38 @@ class Tour
 
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         // echo $result;
+        $arr = json_encode($result);
+        print_r($arr);
+    }
+    public function getActiveTour($email)
+    {
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+        // $tourist = new Tourist();
+
+        // $t_id = $tourist->getTouristId("sasithmj@gmail.com");
+
+        $query1 = "SELECT tourist_id from tourist where email=?;";
+        $statement1 = $con->prepare($query1);
+
+        $res = $statement1->execute([$email]);
+
+
+        $result = $statement1->fetch(PDO::FETCH_ASSOC);
+        $t_id = $result["tourist_id"];
+
+        $query = "SELECT * from tour where tourist_id=? and tour_status='Available';";
+
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$t_id]);
+
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $locations = unserialize($result["locations"]);
+        $result["locations"] = $locations;
+
+
         $arr = json_encode($result);
         print_r($arr);
     }

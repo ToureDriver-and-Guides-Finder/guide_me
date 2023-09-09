@@ -1,5 +1,6 @@
 <?php
 include_once '../classes/DBConnector.php';
+include_once '../classes/Tourist/Tourist.php';
 // include '../DBConnector.php';
 class Destination
 {
@@ -83,8 +84,65 @@ class Destination
         $arr = json_encode($result);
         print_r($arr);
     }
+    public function getFavDes($userid)
+    {
 
-    public function getDestinationByID($id){
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+        try {
+            $dbcon = new DBConnector("guideme");
+            $con = $dbcon->getConnection();
+
+            $query = "SELECT tourist_id from tourist where email=?;";
+            $statement = $con->prepare($query);
+
+            $res = $statement->execute([$userid]);
+
+
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $query = "SELECT * from tourist_destination where tourist_id= ? ;";
+            $statement = $con->prepare($query);
+
+            $res = $statement->execute([$result["tourist_id"]]);
+
+
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            // echo $result;
+            $arr = json_encode($result);
+            // $list = array();
+            $ids = "";
+            $query = "SELECT * from destination where destination_id in (";
+            foreach ($result as $val) {
+                // array_push($list, $val["destination_id"]);
+                $ids .= strval($val["destination_id"]) . ",";
+                $query .= "?,";
+            }
+            $trimed = rtrim($query, ",");
+            $newqueary = $trimed . ");";
+
+            $statement = $con->prepare($newqueary);
+            $count = 1;
+            foreach ($result as $val) {
+                $statement->bindParam($count, $val["destination_id"]);
+                $count += 1;
+            }
+
+            $res = $statement->execute();
+
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            // echo $newqueary;
+            $arr = json_encode($result);
+
+            print_r($arr);
+            // print_r($list);
+        } catch (ERROR $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getDestinationByID($id)
+    {
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
 
@@ -95,12 +153,10 @@ class Destination
 
 
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        
+
         $arr = json_encode($result);
         print_r($arr);
-
     }
-   
 }
 
 

@@ -22,36 +22,48 @@ import ContactUs from "./pages/ContactUs";
 import PageNotFound from "./pages/404";
 import DestinationDetail from "./components/Destination-ShowDetails/distinationDetails";
 import AboutUs from "./components/aboutus/aboutus";
+import DiverHomePage from "./DriverPannel/DriverPages/Home";
+
 // const NavBar = lazy(() => import("./components/Navbar"));
 
 function App() {
   // axios.defaults.headers.post["Content-Type"] = "application/json";
   // axios.defaults.withCredentials = true;
   // axios.defaults.crossDomain = true;
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
+  const [authstate, setAuthState] = useState(0);
+
+  const routesdata = [
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<PageNotFound />} />
+      <Route path="/destinations" element={<Destinations />} />
+      <Route path="/gig" element={<Form />} />
+      <Route path="/tour" element={<TourMain />} />
+      <Route path="/destination-category" element={<DestinationsCategory />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/contact" element={<ContactUs />} />
+      <Route path="/destination_details" element={<DestinationDetail />} />
+      <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/login" element={<TouristAuth />} />
+    </Routes>,
+    <Routes>
+      <Route path="/" element={<DiverHomePage />} />
+      <Route path="*" element={<PageNotFound />} />
+      <Route path="/destinations" element={<Destinations />} />
+      <Route path="/gig" element={<Form />} />
+      <Route path="/tour" element={<TourMain />} />
+      <Route path="/destination-category" element={<DestinationsCategory />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/contact" element={<ContactUs />} />
+      <Route path="/destination_details" element={<DestinationDetail />} />
+      <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/login" element={<TouristAuth />} />
+    </Routes>,
+  ];
   return (
     <div>
-      <NavBar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/gig" element={<Form />} />
-          <Route path="/tour" element={<TourMain />} />
-          <Route
-            path="/destination-category"
-            element={<DestinationsCategory />}
-          />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/destination_details" element={<DestinationDetail />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/login" element={<TouristAuth />} />
-        </Routes>
-      </BrowserRouter>
-
-      <Footer />
+      <BrowserRouter>{routesdata[authstate]}</BrowserRouter>
     </div>
   );
 }

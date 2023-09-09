@@ -7,7 +7,7 @@ const Footer = () => {
       <div class="container py-4">
         <div class="row gy-4 gx-5">
           <div class="col-lg-4 col-md-6">
-            <img src={Logo} alt="footer-logo" />
+            <img src={Logo} alt="footer-logo" id="logo"/>
             <p class="small text-white">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
               eiusmod tempor incididunt.

@@ -20,7 +20,7 @@ const CommentCard = () => {
           </div>
         </div>
         <div className="c-card-body-profile">
-          <img src={profile} alt="..." class="rounded-circle" />
+          <img src={profile} alt="..." className="rounded-circle" />
           <p className="card-text fw-bold">John</p>
           <p className="card-text fw-light">Driver</p>
         </div>

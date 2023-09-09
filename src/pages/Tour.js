@@ -4,10 +4,13 @@ import CallIcon from "../images/call-icon.png";
 import TimeSeatIcon from "../images/time-seat-icon.png";
 import WatchIcon from "../images/watch-icon.png";
 import Image4 from "../images/img-4.png";
+import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const TourMain = () => {
   return (
     <div>
+      <NavBar />
       <div className="banner_section">
         <div className="container-fluid">
           <div className="row">
@@ -251,6 +254,7 @@ const TourMain = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

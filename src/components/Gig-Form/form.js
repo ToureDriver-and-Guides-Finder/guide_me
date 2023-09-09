@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Gig-Form/form.css";
 import LanguageDropdown from "../Languages-Dropdrown/Languages";
 import CountriesDropdown from "../countries-dropdown/Countries";
@@ -6,9 +6,20 @@ import DistrictsDropdown from "../districts-dropdown/Districts";
 import axios from "axios";
 import AddNewTour from "../AddToFavModel/AddNewTour";
 
-export default function Form() {
-  const [formStepsNum, setFormStepsNum] = useState(0);
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import { Nav } from "react-bootstrap";
+import NavBar from "../Navbar";
+import Footer from "../Footer";
 
+export default function Form() {
+  const [districts, setdistricts] = useState([]);
+  const [destinations, setDestinations] = useState([]);
+
+  const [formStepsNum, setFormStepsNum] = useState(0);
+  const [value, setValue] = useState();
+  const [cookie, setcookiedata] = useState(false);
+  const [userdata, setAllData] = useState([]);
   const [data, setData] = useState({
     fname: "",
     lname: "",
@@ -18,10 +29,71 @@ export default function Form() {
     finishdate: "",
     no_of_passengers: "",
     duration: "",
+    country: "",
+    language: "",
   });
+  // const [destinations, setDestinations] = useState([]);
+
+  // const navigate = useNavigate();
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  const destinationchange = (e) => {
+    setDestinations([...destinations, e.target.value]);
+  };
+
+  useEffect(() => {
+    axios.get("districts.json").then((data) => {
+      // console.log(data.data);
+      setdistricts(data.data);
+    });
+    const ck = getCookie("user_id");
+    if (ck) {
+      setcookiedata(true);
+      axios
+        .post(
+          "http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0",
+          {
+            params: {
+              // id: props.props,
+              userId: ck,
+            },
+          }
+        )
+        .then((data) => {
+          // console.log(data.data);
+          setData({
+            fname: data.data["tourist_name"],
+            lname: "",
+            email: data.data["email"],
+            contactNo: data.data["contact_number"],
+            startdate: "",
+            finishdate: "",
+            no_of_passengers: "",
+            duration: "",
+          });
+          setAllData(data.data);
+        });
+    } else {
+      setcookiedata(false);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const value = e.target.value;
+
     setData({
       ...data,
       [e.target.name]: value,
@@ -35,7 +107,7 @@ export default function Form() {
         params: { data: data },
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // if (user_data.data !== "/") {
         //   setError(user_data.data);
         // } else {
@@ -45,11 +117,41 @@ export default function Form() {
       });
     // console.log("ok");
   };
-  console.log(data);
+  // console.log(data);
 
   const getCountry = () => {
     let doc = document.getElementById("country");
-    console.log(doc.value);
+    // console.log(doc.value)
+    return doc.value;
+  };
+  const getLanguage = () => {
+    let doc = document.getElementById("language");
+    return doc.value;
+  };
+
+  const removeDestination = (e) => {
+    // let doc=document.getElementById()
+    console.log(e.target.id);
+    setDestinations(
+      destinations.filter((item) => {
+        return item !== e.target.id;
+      })
+    );
+  };
+
+  const languageCallback = (message) => {
+    setData({
+      ...data,
+      ["language"]: message,
+    });
+    //  return message;
+  };
+  const countryCallback = (message) => {
+    setData({
+      ...data,
+      ["country"]: message,
+    });
+    //  return message;
   };
 
   const formSteps = [
@@ -65,25 +167,15 @@ export default function Form() {
       <div className="row">
         <div className="col-sm">
           <div className="input-group">
+            <lable>Full Name</lable>
             <input
               type={"text"}
               name="fname"
               id="fname"
-              placeholder="FirstName"
+              placeholder="Full Name"
               onChange={handleChange}
               value={data.fname}
-            />
-          </div>
-        </div>
-        <div className="col-sm">
-          <div className="input-group">
-            <input
-              type={"text"}
-              name="lname"
-              id="lname"
-              placeholder="LastName"
-              onChange={handleChange}
-              value={data.lname}
+              required
             />
           </div>
         </div>
@@ -91,42 +183,42 @@ export default function Form() {
       <div className="row">
         <div className="col-sm">
           <div className="input-group">
-            <input type={"text"} name="email" id="email" placeholder="Email" />
+            <lable>Email</lable>
+            <input
+              type={"email"}
+              name="email"
+              id="email"
+              placeholder="Email"
+              onChange={handleChange}
+              value={data.email}
+              required
+            />
           </div>
         </div>
         <div className="col-sm">
           <div className="input-group">
-            <input
-              type={"text"}
+            <lable>Contact Number</lable>
+            <PhoneInput
+              placeholder="Enter phone number"
               name="contactNo"
-              id="contactNo"
-              placeholder="Contact No"
-              onChange={handleChange}
               value={data.contactNo}
+              onChange={setValue}
+              limitMaxLength={13}
             />
           </div>
         </div>
         <div className="col-sm">
           <div className="input-group">
-            <CountriesDropdown />
+            <lable>Country</lable>
+            <CountriesDropdown countryCallback={countryCallback} />
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-sm">
           <div className="input-group">
-            <label htmlFor="gender">Gender</label>
-            <div className="gender-inputs">
-              <input type="radio" name="gender" id="male" value="male" />
-              <label htmlFor="male">Male</label>
-              <input type="radio" name="gender" id="female" value="female" />
-              <label htmlFor="female">Female</label>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm">
-          <div className="input-group">
-            <LanguageDropdown />
+            <lable>Native Language</lable>
+            <LanguageDropdown languageCallback={languageCallback} />
             {/* <select id="lan">
               <option value="language">Language</option>
             
@@ -154,11 +246,49 @@ export default function Form() {
       }
     >
       {/* Step 2 Form Fields */}
-      <div className="input-group">
-        <div className="package">
-          <DistrictsDropdown />
+      <div className="row border">
+        <div className="col-sm-4">
+          {" "}
+          <div className="input-group">
+            <div className="package">
+              <select
+                id="districts"
+                name="district"
+                onChange={destinationchange}
+              >
+                {districts.map((data, key) => (
+                  <option value={data["district"]} key={key}>
+                    {data["district"]}{" "}
+                  </option>
+                ))}
+
+                {/* Add other options */}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-8 d-flex align-items-center">
+          <div className="row">
+            {destinations.map((data) => (
+              <div className="col mb-4 w-100" id={data}>
+                <span className="destination-label">
+                  {data}
+                  <button
+                    type="button"
+                    class="btn-close"
+                    aria-label="Close"
+                    id={data}
+                    onClick={(e) => {
+                      removeDestination(e);
+                    }}
+                  ></button>
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
       <div className="row">
         <div className="col-sm">
           <div className="input-group">
@@ -188,8 +318,8 @@ export default function Form() {
 
       <div className="row">
         <div className="col-sm">
-          <label htmlFor="duration">Duration</label>
           <div className="input-group">
+            <label>Duration</label>
             <input
               type={"text"}
               name="duration"
@@ -201,8 +331,8 @@ export default function Form() {
           </div>
         </div>
         <div className="col-sm">
-          <label htmlFor="no">No of passengers</label>
           <div className="input-group">
+            <label htmlFor="no">No of passengers</label>
             <input
               type={"number"}
               name="no_of_passengers"
@@ -228,7 +358,7 @@ export default function Form() {
         >
           Next
         </button>
-        <AddNewTour/>
+        <AddNewTour props={{ data: data, destinations: destinations }} />
       </div>
     </div>,
     // Add more form steps as needed
@@ -325,7 +455,7 @@ export default function Form() {
     // </div>,
   ];
 
-  const progressSteps = ["Info", "Tour"];
+  const progressSteps = ["Personal Information", "Tour Details"];
 
   const handleNextStep = () => {
     setFormStepsNum((prev) => Math.min(prev + 1, formSteps.length - 1));
@@ -341,6 +471,7 @@ export default function Form() {
 
   return (
     <main>
+      <NavBar />
       <div className="formb">
         <form className="form-con" onSubmit={handleSubmit}>
           <h1 className="text-center">Plan Your Trip</h1>
@@ -367,6 +498,7 @@ export default function Form() {
           {formSteps[formStepsNum]}
         </form>
       </div>
+      <Footer />
     </main>
   );
 }

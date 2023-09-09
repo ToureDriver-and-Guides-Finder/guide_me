@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddToFav = (props) => {
-  // console.log(props.props);
+  console.log(props.props);
   const [tourname, setTourName] = useState("");
   const [alltours, setAllTuors] = useState([]);
-  const [newtour, setNewTour] = useState(false);
-  const [des_id, setDesID] = useState("20");
-
+  const [newtour, setNewTour] = useState();
+  const [des_id, setDesID] = useState();
+  const navigate = useNavigate();
   function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -36,7 +37,7 @@ const AddToFav = (props) => {
         // console.log(data.data);
         setAllTuors(data.data);
       });
-  }, []);
+  }, [newtour]);
 
   const handleChange = (e) => {
     setTourName(e.target.value);
@@ -47,6 +48,8 @@ const AddToFav = (props) => {
   // console.log(alltours);
   const handleClik = (e) => {
     // console.log(e.currentTarget.id);
+    let doc = document.getElementById("saveTour");
+    doc.id = e.currentTarget.id;
     setDesID(e.currentTarget.id);
   };
 
@@ -66,14 +69,14 @@ const AddToFav = (props) => {
       })
       .then((data) => {
         console.log(data.data);
-        //   setData(data.data);
+        setNewTour(data.data);
       });
   };
   // console.log(props.props);
 
-  const handleTourSubmit = (e, desID) => {
+  const handleTourSubmit = (e) => {
     e.preventDefault();
-    console.log(des_id);
+    let desID = e.target.id;
     axios
       .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
         params: {
@@ -84,6 +87,7 @@ const AddToFav = (props) => {
         },
       })
       .then((data) => {
+        window.location.reload();
         console.log(data.data);
         //   setData(data.data);
       });
@@ -96,6 +100,7 @@ const AddToFav = (props) => {
       // console.log(ele[i].checked);
       if (ele[i].checked) {
         // console.log(ele[i].value);
+
         return ele[i].value;
       }
     }
@@ -168,9 +173,9 @@ const AddToFav = (props) => {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    id={props.props}
+                    id="saveTour"
                     onClick={(e) => {
-                      handleTourSubmit(e, des_id);
+                      handleTourSubmit(e);
                     }}
                   >
                     Save Tour
@@ -204,9 +209,9 @@ const AddToFav = (props) => {
                     <button
                       type="submit"
                       className="btn btn-outline-secondary p-2"
-                      onClick={() => {
-                        setNewTour(true);
-                      }}
+                      // onClick={() => {
+                      //   setNewTour(true);
+                      // }}
                     >
                       Create Tour
                     </button>

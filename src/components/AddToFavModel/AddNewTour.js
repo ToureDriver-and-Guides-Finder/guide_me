@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddNewTour = () => {
-  // console.log(props.props);
+const AddNewTour = (props) => {
+  console.log(props.props);
   const navigate = useNavigate();
   const [tourname, setTourName] = useState("");
   const [alltours, setAllTuors] = useState([]);
-  const [newtour, setNewTour] = useState(false);
-  const [des_id, setDesID] = useState("20");
+  const [newtour, setNewTour] = useState([]);
+  const [des_id, setDesID] = useState();
+  const [message, setMessage] = useState("");
 
   function getCookie(cname) {
     let name = cname + "=";
@@ -38,7 +39,7 @@ const AddNewTour = () => {
         // console.log(data.data);
         setAllTuors(data.data);
       });
-  }, []);
+  }, [newtour]);
 
   const handleChange = (e) => {
     setTourName(e.target.value);
@@ -52,44 +53,57 @@ const AddNewTour = () => {
     setDesID(e.currentTarget.id);
   };
 
-  console.log(des_id);
+  // console.log(des_id);
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  //     axios
-  //       .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
-  //         params: {
-  //           id: props.props["desId"],
-  //           tourname: tourname,
-  //           userId: getCookie("user_id"),
-  //           function: "create",
-  //         },
-  //       })
-  //       .then((data) => {
-  //         console.log(data.data);
-  //         //   setData(data.data);
-  //       });
-  //   };
+    axios
+      .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
+        params: {
+          id: props.props["desId"],
+          tourname: tourname,
+          userId: getCookie("user_id"),
+          function: "create",
+        },
+      })
+      .then((data) => {
+        setNewTour(data.data);
+      });
+  };
   // console.log(props.props);
 
-  //   const handleTourSubmit = (e, desID) => {
-  //     e.preventDefault();
-  //     console.log(des_id);
-  //     axios
-  //       .post("http://localhost:80/guide_me/src/server/api/addtofav.php?id=0", {
-  //         params: {
-  //           function: "addToFav",
-  //           des_id: desID,
-  //           user_id: getCookie("user_id"),
-  //           tour_id: displayRadioValue(),
-  //         },
-  //       })
-  //       .then((data) => {
-  //         console.log(data.data);
-  //         //   setData(data.data);
-  //       });
-  //   };
+  const handleTourSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post("http://localhost:80/guide_me/src/server/api/addTour.php?id=0", {
+        params: {
+          user_id: getCookie("user_id"),
+          tour_id: displayRadioValue(),
+          destinations: props.props.destinations,
+          data: props.props.data,
+        },
+      })
+      .then((data) => {
+        console.log(data.data);
+        //   setData(data.data);
+        if (data.data == 1) {
+          setMessage("Tour added Successfully");
+          setTimeout(() => {
+            document.getElementById("exampleModalCenter").style.display =
+              "none";
+            window.location.reload();
+          }, 3000);
+        } else {
+          setMessage("Error occur.Try again later!");
+          // setTimeout(() => {
+          //   document.getElementById("exampleModalCenter").style.display =
+          //     "none";
+          // }, 3000);
+        }
+      });
+  };
 
   function displayRadioValue() {
     var ele = document.getElementsByName("options");
@@ -143,7 +157,7 @@ const AddNewTour = () => {
             </div>
             <div className="modal-body">
               <div className="container">
-                <form method="POST">
+                <form>
                   {alltours.map((data, index) => (
                     <div className="row mt-2" key={index}>
                       {/* <div className="card">
@@ -172,7 +186,7 @@ const AddNewTour = () => {
                     className="btn btn-primary"
                     // id={props.props}
                     onClick={(e) => {
-                      navigate("/profile");
+                      handleTourSubmit(e);
                     }}
                   >
                     Save Tour
@@ -206,8 +220,8 @@ const AddNewTour = () => {
                     <button
                       type="submit"
                       className="btn btn-outline-secondary p-2"
-                      onClick={() => {
-                        setNewTour(true);
+                      onClick={(e) => {
+                        handleSubmit(e);
                       }}
                     >
                       Create Tour
@@ -216,6 +230,21 @@ const AddNewTour = () => {
                   <hr className="mt-2" />
                 </div>
               </form>
+              {message != "" ? (
+                <div class="alert alert-success alert-dismissible w-100">
+                  <a
+                    href="#"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="close"
+                  >
+                    &times;
+                  </a>
+                  <strong>Success!</strong> {message}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

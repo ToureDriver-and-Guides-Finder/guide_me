@@ -1,7 +1,9 @@
+import DriverNavBar from "../Components/DriverNav";
+
 const DiverHomePage = () => {
     return ( 
         <div>
-            Driver page
+            <DriverNavBar/>
         </div>
      );
 }

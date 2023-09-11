@@ -23,6 +23,7 @@ import PageNotFound from "./pages/404";
 import DestinationDetail from "./components/Destination-ShowDetails/distinationDetails";
 import AboutUs from "./components/aboutus/aboutus";
 import DiverHomePage from "./DriverPannel/DriverPages/Home";
+import DashBoard from "./Admin/pages/Dashboard";
 
 // const NavBar = lazy(() => import("./components/Navbar"));
 
@@ -31,7 +32,7 @@ function App() {
   // axios.defaults.withCredentials = true;
   // axios.defaults.crossDomain = true;
   const [auth, setAuth] = useState(true);
-  const [authstate, setAuthState] = useState(0);
+  const [authstate, setAuthState] = useState(1);
 
   const routesdata = [
     <Routes>
@@ -59,6 +60,9 @@ function App() {
       <Route path="/destination_details" element={<DestinationDetail />} />
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/login" element={<TouristAuth />} />
+    </Routes>,
+    <Routes>
+      <Route path="/" element={<DashBoard />} />
     </Routes>,
   ];
   return (

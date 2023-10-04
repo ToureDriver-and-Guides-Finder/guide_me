@@ -137,10 +137,9 @@ class Destination
                 $arr = json_encode($result);
 
                 print_r($arr);
+            } else {
+                echo "No Date Found";
             }
-            // } else {
-            //     echo "No Date Found";
-            // }
             // echo $result;
 
             // print_r($list);

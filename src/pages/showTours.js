@@ -2,13 +2,14 @@ import { useState } from "react";
 import TourCard from "../components/Tours/TourCard";
 import { useEffect } from "react";
 import axios from "axios";
+import ErrorMassege from "../components/Error-Massages/Errormsg";
 
 const ShowTours = () => {
-  console.log()
+  console.log();
   const [tourname, setTourName] = useState("");
   const [alltours, setAllTuors] = useState([]);
   const [newtour, setNewTour] = useState();
-  const [des_id, setDesID] = useState();
+  const [massage, setMessage] = useState(false);
   // const navigate = useNavigate();
   function getCookie(cname) {
     let name = cname + "=";
@@ -38,15 +39,23 @@ const ShowTours = () => {
         }
       )
       .then((data) => {
-        // console.log(data.data);
-        setAllTuors(data.data);
+        console.log(data.data);
+        if (data.data == "No data") {
+          setMessage(true);
+        } else {
+          setAllTuors(data.data);
+        }
       });
   }, [newtour]);
   return (
     <div className="row">
-      <div className="col-lg-12">
-        <TourCard props={alltours} />
-      </div>
+      {!massage ? (
+        <div className="col-lg-12">
+          <TourCard props={alltours} />
+        </div>
+      ) : (
+        <ErrorMassege />
+      )}
     </div>
   );
 };

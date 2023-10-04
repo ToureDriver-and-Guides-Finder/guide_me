@@ -33,13 +33,13 @@
   height: 80vh;
 }
 
-.form-control {
+.navform {
   border: none;
   border-radius: 25px;
   background-color: transparent;
   color: #fff;
 }
-.form-control:focus {
+.navform:focus {
   border: none;
   border-radius: 25px;
   background-color: transparent;
@@ -61,7 +61,7 @@ svg {
   width: 20px;
   height: auto;
 }
-.search-div{
+.search-div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

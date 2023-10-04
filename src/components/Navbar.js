@@ -95,7 +95,7 @@ const NavBar = () => {
           <li className="nav-item">
             <div className="d-flex flex-row align-items-center px-2 searchcon">
               <input
-                className="form-control mr-sm-2"
+                className="form-control mr-sm-2 navform"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -112,15 +112,20 @@ const NavBar = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-               
                 <PersonCircle className="p-0 person" />
-                {userdata.length!=0?<span className="m-1">
-                  {" "}
-                  Hello, {userdata.tourist_name.split(" ")[0]} !
-                </span>:""}
-              
+                {userdata.length != 0 ? (
+                  <span className="m-1">
+                    {" "}
+                    Hello, {userdata.tourist_name.split(" ")[0]} !
+                  </span>
+                ) : (
+                  ""
+                )}
               </a>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
                 <a className="dropdown-item" href="/profile">
                   Profile
                 </a>
@@ -131,10 +136,12 @@ const NavBar = () => {
                   Favorite Destinations
                 </a>
                 <div class="dropdown-divider"></div>
-                <a className="dropdown-item btn btn-danger text-danger" href="#">
+                <a
+                  className="dropdown-item btn btn-danger text-danger"
+                  href="#"
+                >
                   Logout
                 </a>
-                
               </div>
             </div>
           ) : (

@@ -103,7 +103,6 @@ class Tour
         $arr = json_encode($result);
         print_r($arr);
     }
-
     public function getActiveTour($email)
     {
         $dbcon = new DBConnector("guideme");
@@ -157,11 +156,11 @@ class Tour
         $result = $statement1->fetch(PDO::FETCH_ASSOC);
         $t_id = $result["tourist_id"];
 
-        $query = "Insert into tourist_destination (destination_id,tour_id,email) values(?,?,?);";
+        $query = "Insert into tourist_destination (tourist_id,destination_id,tour_id,email) values(?,?,?,?);";
 
         $statement = $con->prepare($query);
 
-        $res = $statement->execute([$destinationid, $tourid, $userid]);
+        $res = $statement->execute([$t_id, $destinationid, $tourid, $userid]);
 
         echo $destinationid;
         // $result = $statement->fetchAll(PDO::FETCH_ASSOC);

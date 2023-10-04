@@ -2,10 +2,14 @@ import TimeAgo from "javascript-time-ago";
 
 // English.
 import en from "javascript-time-ago/locale/en";
+import { useState } from "react";
+import { TrashFill } from "react-bootstrap-icons";
 
 const TourCard = (props) => {
+  const [locations, setlocations] = useState(["badulla"]);
+  
   TimeAgo.addDefaultLocale(en);
-  const locations = props.props["locations"];
+  // setlocations(props.props["locations"]);
   console.log(locations);
   // Create formatter (English).
   const timeAgo = new TimeAgo("en-US");
@@ -29,30 +33,43 @@ const TourCard = (props) => {
 
         <div className="row">
           <div className="row">
-            <div className="col-2">Start Date:</div>
-            <div className="col-2 text-muted">{props.props["start_date"]}</div>
+            <div className="col col-lg-2">Start Date:</div>
+            <div className="col col-lg-2 text-muted">
+              {props.props["start_date"]}
+            </div>
           </div>
           <div className="row">
-            <div className="col-2 font-weight-bold">End Date:</div>
-            <div className="col-2 text-muted">{props.props["end_date"]}</div>
+            <div className="col col-lg-2 font-weight-bold">End Date:</div>
+            <div className="col col-lg-2 text-muted">
+              {props.props["end_date"]}
+            </div>
           </div>
         </div>
 
         <div className="row">
-          <div className="col-4">Locations to visit:</div>
-          {/* <div className="col-8">{locations.map((name) => ({ name }))}</div> */}
+          <div className="col">Locations to visit:</div>
+          {/* {locations.map((data) => (
+            <div className="col-8">{data}</div>
+          ))} */}
         </div>
       </div>
       <div className="card-footer">
-        <small className="text-muted">
-          {/* {timeAgo.format(
-            Date.now() -
-              Date(props.props["published_time"]).getHours() *
-                60 *
-                60 *
-                1000
-          )} */}
-        </small>
+        <div className="row">
+          <div className="col-2">
+            <button
+              type="button"
+              className="btn btn-danger"
+              style={{ width: "fit-content", minWidth: 0 }}
+            >
+              <TrashFill style={{ color: "white" }} className="m-1" />
+            </button>
+          </div>
+          <div className="col-3">
+            <button type="button" className="btn btn-outline-secondary">
+              Edit
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

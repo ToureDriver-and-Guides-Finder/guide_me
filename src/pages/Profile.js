@@ -223,7 +223,7 @@ const Profile = () => {
                   </button>
                   <button
                     className={
-                      content == 2
+                      content == 3
                         ? "nav-link active"
                         : "nav-link text-secondary"
                     }

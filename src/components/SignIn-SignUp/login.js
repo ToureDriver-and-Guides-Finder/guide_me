@@ -114,7 +114,7 @@ const TouristAuth = () => {
                   <label for="exampleInputEmail1">Email address</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control lform"
                     id="exampleInputEmail1"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
@@ -127,7 +127,7 @@ const TouristAuth = () => {
                   <label for="exampleInputPassword1">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control lform"
                     id="exampleInputPassword1"
                     placeholder="Password"
                     name="psw"

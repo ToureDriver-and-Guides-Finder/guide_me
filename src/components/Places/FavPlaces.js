@@ -34,7 +34,7 @@ const FavPlaces = () => {
     <div className="row">
       {des_data.length != 0 ? (
         des_data.map((data, key) => (
-          <div className="col-4 mb-2" key={key}>
+          <div className="col col-lg-4 mb-2" key={key}>
             <PolularDestinationCard
               props={{
                 name: data["name"],

@@ -3,6 +3,8 @@ import "../Destination-ShowDetails/destination-style.css";
 import axios from "axios";
 import AddToFav from "../AddToFavModel/AddToFav";
 import PolularDestinationCard from "../Destination-popular/populardestinationcard";
+import NavBar from "../Navbar";
+import Footer from "../Footer";
 
 const DestinationDetail = () => {
   const [desdata, setData] = useState([]);
@@ -39,6 +41,7 @@ const DestinationDetail = () => {
   console.log(desdata);
   return (
     <div>
+      <NavBar/>
       <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
           <img
@@ -76,7 +79,7 @@ const DestinationDetail = () => {
             <div className="row justify-content-center g-5 p-card-row">
               {similardesdata.length != 0 ? (
                 similardesdata.map((data, key) => (
-                  <div className="col-3">
+                  <div className="col-sm col-lg-4">
                     <PolularDestinationCard
                       props={{
                         name: data["name"],
@@ -156,6 +159,7 @@ allStar.forEach((item, idx)=> {
 	})
 })
     </script> */}
+    <Footer/>
     </div>
   );
 };

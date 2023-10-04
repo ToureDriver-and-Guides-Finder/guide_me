@@ -32,7 +32,7 @@ function App() {
   // axios.defaults.withCredentials = true;
   // axios.defaults.crossDomain = true;
   const [auth, setAuth] = useState(true);
-  const [authstate, setAuthState] = useState(1);
+  const [authstate, setAuthState] = useState(0);
 
   const routesdata = [
     <Routes>
@@ -51,7 +51,7 @@ function App() {
     <Routes>
       <Route path="/" element={<DiverHomePage />} />
       <Route path="*" element={<PageNotFound />} />
-      <Route path="/destinations" element={<Destinations />} />
+      {/* <Route path="/destinations" element={<Destinations />} />
       <Route path="/gig" element={<Form />} />
       <Route path="/tour" element={<TourMain />} />
       <Route path="/destination-category" element={<DestinationsCategory />} />
@@ -59,7 +59,7 @@ function App() {
       <Route path="/contact" element={<ContactUs />} />
       <Route path="/destination_details" element={<DestinationDetail />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/login" element={<TouristAuth />} />
+      <Route path="/login" element={<TouristAuth />} /> */}
     </Routes>,
     <Routes>
       <Route path="/" element={<DashBoard />} />

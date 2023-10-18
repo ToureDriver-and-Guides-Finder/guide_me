@@ -2,15 +2,18 @@ import TimeAgo from "javascript-time-ago";
 
 // English.
 import en from "javascript-time-ago/locale/en";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TrashFill } from "react-bootstrap-icons";
 
 const TourCard = (props) => {
-  const [locations, setlocations] = useState(["badulla"]);
-  
+  const [locations, setlocations] = useState([]);
+
   TimeAgo.addDefaultLocale(en);
-  // setlocations(props.props["locations"]);
-  console.log(locations);
+  // locations = props.props["locations"];
+  // useEffect(() => {
+  //   console.log(props.props["tour_name"]);
+  //   // setlocations(props.props["locations"]);
+  // }, []);
   // Create formatter (English).
   const timeAgo = new TimeAgo("en-US");
 
@@ -48,9 +51,9 @@ const TourCard = (props) => {
 
         <div className="row">
           <div className="col">Locations to visit:</div>
-          {/* {locations.map((data) => (
+          {locations.map((data) => (
             <div className="col-8">{data}</div>
-          ))} */}
+          ))}
         </div>
       </div>
       <div className="card-footer">

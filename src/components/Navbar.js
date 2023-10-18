@@ -70,6 +70,16 @@ const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto w-50 justify-content-around">
           <li className="nav-item active ">
+            <a className="nav-link text-white" href="d-login">
+              Driver
+            </a>
+          </li>
+          <li className="nav-item active ">
+            <a className="nav-link text-white" href="destinations">
+              Guide
+            </a>
+          </li>
+          <li className="nav-item active ">
             <a className="nav-link text-white" href="destinations">
               Destinations
             </a>

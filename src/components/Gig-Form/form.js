@@ -11,8 +11,15 @@ import PhoneInput from "react-phone-number-input";
 import { Nav } from "react-bootstrap";
 import NavBar from "../Navbar";
 import Footer from "../Footer";
+import Select from "react-select";
 
 export default function Form() {
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
+
   const [districts, setdistricts] = useState([]);
   const [destinations, setDestinations] = useState([]);
 
@@ -31,6 +38,7 @@ export default function Form() {
     duration: "",
     country: "",
     language: "",
+    displayImage: "",
   });
   // const [destinations, setDestinations] = useState([]);
 
@@ -51,14 +59,39 @@ export default function Form() {
     return "";
   }
   const destinationchange = (e) => {
-    setDestinations([...destinations, e.target.value]);
+    let des = [];
+    data.displayImage = e[0]["img"];
+    e.forEach((element) => {
+      des.push(element["value"]);
+    });
+    // console.log(des);
+
+    setDestinations(des);
   };
 
   useEffect(() => {
-    axios.get("districts.json").then((data) => {
-      // console.log(data.data);
-      setdistricts(data.data);
-    });
+    axios
+      .get(
+        "http://localhost:80/guide_me/src/server/api/getdestinations.php?id=0",
+        {
+          params: { function: "all" },
+        }
+      )
+      .then((data) => {
+        let desdata = [];
+        for (let i = 0; i <= data.data.length - 1; i++) {
+          console.log(data.data[i]["name"]);
+          let item = {
+            value: data.data[i]["name"],
+            label: data.data[i]["name"],
+            img: data.data[i]["image"],
+          };
+          desdata.push(item);
+        }
+        console.log(desdata);
+        setdistricts(desdata);
+      });
+
     const ck = getCookie("user_id");
     if (ck) {
       setcookiedata(true);
@@ -83,6 +116,7 @@ export default function Form() {
             finishdate: "",
             no_of_passengers: "",
             duration: "",
+            displayImage: "",
           });
           setAllData(data.data);
         });
@@ -102,6 +136,8 @@ export default function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // data.displayImage = destinations[0]["img"];
+    console.log(data);
     axios
       .post("http://localhost:80/guide_me/src/server/api/addTour.php?id=0", {
         params: { data: data },
@@ -247,7 +283,8 @@ export default function Form() {
     >
       {/* Step 2 Form Fields */}
       <div className="row border">
-        <div className="col-sm-4">
+        <Select options={districts} isMulti onChange={destinationchange} />
+        {/* <div className="col-sm-4">
           {" "}
           <div className="input-group">
             <div className="package">
@@ -262,7 +299,7 @@ export default function Form() {
                   </option>
                 ))}
 
-                {/* Add other options */}
+            
               </select>
             </div>
           </div>
@@ -286,7 +323,7 @@ export default function Form() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="row">

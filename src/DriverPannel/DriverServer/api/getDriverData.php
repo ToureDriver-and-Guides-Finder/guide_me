@@ -6,7 +6,7 @@ header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
 header("Access-Control-Allow-Headers: *");
 header('Access-Control-Allow-Credentials:true');
 // include_once '../classes/Destinations/Destination.php';
-include_once '../classes/Tourist/Tourist.php';
+include_once '../classes/Driver/Driver.php';
 
 $url = $_SERVER["REQUEST_URI"];
 $url_components = parse_url($url);
@@ -15,8 +15,8 @@ parse_str($url_components['query'], $params);
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body, true);
 
-$tourist = new Tourist();
+$tourist = new Driver();
 
 // echo "ok";
 
-echo $tourist->getTouristData($data["params"]["userId"]);
+echo $tourist->getDriverData($data["params"]["userId"]);

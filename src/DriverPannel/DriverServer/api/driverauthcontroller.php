@@ -10,7 +10,7 @@ header("Access-Control-Allow-Headers: *");
 header('Access-Control-Allow-Credentials:true');
 
 // include '../classes/DBConnector.php';
-include '../classes/auth/touristauth.php';
+include '../classes/auth/driverAuth.php';
 
 
 // $DB = new DBConnector("test1");
@@ -26,15 +26,19 @@ parse_str($url_components['query'], $params);
 
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body, true);
-$tauth = new Tourist();
+$tauth = new DriverAuth();
 switch ($data["params"]["function"]) {
     case "register":
         $name = $data["params"]["data"]["name"];
         $contact = $data["params"]["data"]["contact"];
         $email = $data["params"]["data"]["email"];
         $psw = $data["params"]["data"]["psw"];
+        $vehi = $data["params"]["data"]["vehical"];
+        $mark = $data["params"]["data"]["mark"];
+        $model = $data["params"]["data"]["model"];
+        $registration = $data["params"]["data"]["registration"];
 
-        $tauth->register($name, $email, $contact, $psw);
+        $tauth->register($name, $email, $contact, $psw,$vehi,$mark,$model, $registration);
 
 
     case "login":

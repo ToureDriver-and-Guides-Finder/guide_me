@@ -24,6 +24,8 @@ import DestinationDetail from "./components/Destination-ShowDetails/distinationD
 import AboutUs from "./components/aboutus/aboutus";
 import DiverHomePage from "./DriverPannel/DriverPages/Home";
 import DashBoard from "./Admin/pages/Dashboard";
+import DriverLogin from "./DriverPannel/Components/Driver-Login/DriverLogin";
+import TourDetails from "./DriverPannel/DriverPages/TourDetails";
 
 // const NavBar = lazy(() => import("./components/Navbar"));
 
@@ -47,10 +49,13 @@ function App() {
       <Route path="/destination_details" element={<DestinationDetail />} />
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/login" element={<TouristAuth />} />
+      <Route path="/d-login" element={<DriverLogin />} />
     </Routes>,
     <Routes>
       <Route path="/" element={<DiverHomePage />} />
       <Route path="*" element={<PageNotFound />} />
+      <Route path="/d-login" element={<DriverLogin />} />
+      <Route path="/tour-details" element={<TourDetails />} />
       {/* <Route path="/destinations" element={<Destinations />} />
       <Route path="/gig" element={<Form />} />
       <Route path="/tour" element={<TourMain />} />

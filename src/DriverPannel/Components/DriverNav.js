@@ -33,7 +33,7 @@ const DriverNavBar = () => {
       setcookiedata(true);
       axios
         .post(
-          "http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0",
+          "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/getDriverData.php?id=0",
           {
             params: {
               // id: props.props,
@@ -95,7 +95,7 @@ const DriverNavBar = () => {
           <li className="nav-item">
             <div className="d-flex flex-row align-items-center px-2 searchcon">
               <input
-                className="form-control mr-sm-2"
+                className="dserch form-control mr-sm-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
@@ -116,7 +116,7 @@ const DriverNavBar = () => {
                 {userdata.length != 0 ? (
                   <span className="m-1">
                     {" "}
-                    Hello, {userdata.tourist_name.split(" ")[0]} !
+                    Hello, {userdata.driver_name.split(" ")[0]} !
                   </span>
                 ) : (
                   ""
@@ -163,7 +163,7 @@ const DriverNavBar = () => {
                   name="reg_button"
                   id="register_button"
                   className="btn btn-dark"
-                  href="/login"
+                  href="/d-login"
                   role="button"
                 >
                   Sign in/register

@@ -31,6 +31,7 @@ $duration = $data["params"]["data"]["duration"];
 
 $desdata = serialize($data["params"]["destinations"]);
 $tourid=$data["params"]["tour_id"];
+$img = $data["params"]["data"]["displayImage"];
 
 
 
@@ -38,5 +39,4 @@ $tourid=$data["params"]["tour_id"];
 
 
 
-
-echo $tour->updateTour($name, $email, $contact, $sdate, $fdate, $no_of_passengers, $duration,$desdata, $tourid);
+echo $tour->updateTour($name, $email, $contact, $sdate, $fdate, $no_of_passengers, $duration,$desdata, $tourid,$img);

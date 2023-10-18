@@ -1,16 +1,16 @@
 <?php
 include_once "../classes/DBConnector.php";
 
-class Tourist
+class Driver
 {
-    private $tourist_id;
-    private $tourist_name;
-    private $tourist_gender;
-    private $contact_number;
+    private $driver_id;
+    private $driver_name;
+    private $driver_gender;
+    private $driver_number;
     private $email;
     private $country;
 
-    public function getTouristId($email)
+    public function getDriverId($email)
     {
         try {
             $dbcon = new DBConnector("guideme");
@@ -28,13 +28,13 @@ class Tourist
             echo $e->getMessage();
         }
     }
-    public function getTouristData($email)
+    public function getDriverData($email)
     {
         try {
             $dbcon = new DBConnector("guideme");
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * from tourist where email=?;";
+            $query = "SELECT * from driver where email=?;";
             $statement = $con->prepare($query);
 
             $res = $statement->execute([$email]);

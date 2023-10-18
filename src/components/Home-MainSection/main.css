@@ -9,7 +9,6 @@
 
 img {
   object-fit: cover;
-  
 }
 
 .text-div {
@@ -22,15 +21,18 @@ img {
   color: #0f3057;
   font-weight: bolder;
   font-size: 6vw;
+  animation: from-top 2000ms forwards cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 .sub-topic {
   color: #00587a;
   font-weight: 400;
   font-size: 3vw;
+  animation: from-top 2000ms forwards cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .btn-div {
   margin-top: 24px;
+  animation: from-bottom 2000ms forwards cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 .btn {
   margin-right: 24px;
@@ -101,4 +103,29 @@ img {
   .sub-topic {
     font-size: 5vw;
   }
+}
+@keyframes from-top {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes from-bottom {
+    0% {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(15%);
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 }

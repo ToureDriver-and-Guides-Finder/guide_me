@@ -33,18 +33,18 @@
   height: 80vh;
 }
 
-/* .form-control {
+.dserch {
   border: none;
   border-radius: 25px;
   background-color: transparent;
   color: #fff;
 }
-.form-control:focus {
+.dserch:focus {
   border: none;
   border-radius: 25px;
   background-color: transparent;
   color: #fff;
-} */
+}
 .searchcon {
   border: none;
   border-radius: 25px;
@@ -61,7 +61,7 @@ svg {
   width: 20px;
   height: auto;
 }
-.search-div{
+.search-div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

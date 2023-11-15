@@ -103,6 +103,29 @@ class Tour
         $arr = json_encode($result);
         print_r($arr);
     }
+    public function getTourById($tid)
+    {
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+        $query = "SELECT * from tour where tour_id=?;";
+
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$tid]);
+
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $count = 0;
+
+        $locations = unserialize($result["locations"]);
+        $result["locations"] = $locations;
+
+        // $arr = json_encode($result);
+        // print_r($arr);
+        $arr = json_encode($result);
+        print_r($arr);
+    }
 
     public function getActiveTour($email)
     {
@@ -198,5 +221,11 @@ class Tour
         } else {
             echo "No data";
         }
+    }
+
+    public function calculateEstimations($locations){
+
+        
+
     }
 }

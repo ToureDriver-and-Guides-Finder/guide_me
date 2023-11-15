@@ -6,6 +6,7 @@ import CdImg4 from "../images/road.jpg";
 import "../styles/all_destinations.css";
 import axios from "axios";
 import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const DestinationsCategory = () => {
   const [des_data, setData] = useState([]);
@@ -39,7 +40,7 @@ const DestinationsCategory = () => {
 
   return (
     <>
-    <NavBar/>
+      <NavBar />
       {des_data.lenght !== 0 ? (
         <div>
           <div
@@ -140,6 +141,7 @@ const DestinationsCategory = () => {
       ) : (
         <div>somthing went wrong!</div>
       )}
+      <Footer />
     </>
   );
 };

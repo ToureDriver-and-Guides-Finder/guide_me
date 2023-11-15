@@ -50,6 +50,12 @@ const NavBar = () => {
     }
   }, []);
 
+  const logout = () => {
+    document.cookie = "user_id=;";
+    document.cookie = "user_type=;";
+    navigate("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <a className="navbar-brand" href="/">
@@ -146,12 +152,14 @@ const NavBar = () => {
                   Favorite Destinations
                 </a>
                 <div class="dropdown-divider"></div>
-                <a
+                <div
                   className="dropdown-item btn btn-danger text-danger"
-                  href="#"
+                  onClick={() => {
+                    logout();
+                  }}
                 >
                   Logout
-                </a>
+                </div>
               </div>
             </div>
           ) : (

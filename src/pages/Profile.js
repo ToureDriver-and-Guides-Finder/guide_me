@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ShowTours from "./showTours";
 import { Gear, HeartFill } from "react-bootstrap-icons";
 import FavPlaces from "../components/Places/FavPlaces";
+import ShowOffers from "../components/Myoffers/ShowOffers";
 
 const Profile = () => {
   const [alldata, setAllData] = useState([]);
@@ -49,7 +50,7 @@ const Profile = () => {
   const tourContent = [
     <ShowTours props={alldata} />,
     <>
-      <div>content2</div>
+      <ShowOffers/>
     </>,
     <>
       <div>content3</div>

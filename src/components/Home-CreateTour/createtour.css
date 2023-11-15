@@ -41,11 +41,11 @@
   color: white;
   padding: 12px;
   /* font-size: 3vw; */
-  font-size: calc(32px + 0.390625vw);
+  font-size: calc(42px + 0.390625vw);
   left: 10%;
 }
 .para{
-  font-size: 1vw;
+  font-size: 1.3vw;
   line-height: 1.5;
   letter-spacing: 2px;
 }

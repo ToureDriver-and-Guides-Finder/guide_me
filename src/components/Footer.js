@@ -1,4 +1,12 @@
-import { EnvelopeAt, EnvelopeAtFill, Facebook, Instagram, PhoneFill, Twitter, Whatsapp } from "react-bootstrap-icons";
+import {
+  EnvelopeAt,
+  EnvelopeAtFill,
+  Facebook,
+  Instagram,
+  PhoneFill,
+  Twitter,
+  Whatsapp,
+} from "react-bootstrap-icons";
 import "../components/footer.css";
 import Logo from "../images/logo1.png";
 const Footer = () => {
@@ -7,14 +15,12 @@ const Footer = () => {
       <div class="container py-4">
         <div class="row gy-4 gx-5">
           <div class="col-lg-4 col-md-6">
-            <img src={Logo} alt="footer-logo" id="logo"/>
+            <img src={Logo} alt="footer-logo" id="logo" />
             <p class="small text-white">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt.
+              Explore Beyond Boundaries: Your Journey, Our Expertise!
             </p>
             <p class="small text-white mb-0">
               &copy; Copyrights. All rights reserved.{" "}
-              
             </p>
           </div>
           <div class="col-lg-2 col-md-6">
@@ -26,18 +32,23 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#"><Instagram/></a>
+                <a href="#">
+                  <Instagram />
+                </a>
               </li>
               <li>
-                <a href="#"><Facebook/></a>
+                <a href="#">
+                  <Facebook />
+                </a>
               </li>
               <li>
-                <a href="#"><Twitter/></a>
+                <a href="#">
+                  <Twitter />
+                </a>
               </li>
             </ul>
           </div>
           <div class="col-lg-2 col-md-6">
-            
             <ul class="list-unstyled text-muted">
               <li>
                 <a href="#">ABOUT US</a>
@@ -56,10 +67,18 @@ const Footer = () => {
           <div class="col-lg-4 col-md-6">
             <h5 class="text-white mb-3">Contact Us</h5>
             <p class="small text-muted d-flex flex-row align-items-center">
-              <EnvelopeAtFill/><span style={{color:'white',marginLeft:"5px"}}> guideme@gmail.com</span>
+              <EnvelopeAtFill />
+              <span style={{ color: "white", marginLeft: "5px" }}>
+                {" "}
+                guideme@gmail.com
+              </span>
             </p>
             <p class="small text-muted d-flex flex-row align-items-center">
-              <PhoneFill/><span style={{color:'white',marginLeft:"5px"}}> 0712402274</span>
+              <PhoneFill />
+              <span style={{ color: "white", marginLeft: "5px" }}>
+                {" "}
+                0712402274
+              </span>
             </p>
           </div>
         </div>

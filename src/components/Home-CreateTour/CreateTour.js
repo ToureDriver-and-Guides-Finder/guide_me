@@ -7,8 +7,10 @@ const CreateTour = () => {
       <div className="left-con">
         <img src={BGImage} className="bgimg-2" />
         <h1 className="text-overlay">
-          Your Gateway to<br></br> Personalized Travel:<br></br> Connect,
-          Explore,<br></br> Experience!
+          <b>
+            Your Gateway to<br></br> Personalized Travel:<br></br> Connect,
+            Explore,<br></br> Experience!
+          </b>
         </h1>
       </div>
       <div className="right-con">

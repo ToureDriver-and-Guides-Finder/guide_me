@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/js/src/collapse.js";
 import Logo from "../../images/logo1.png";
 import "../Components/nav.css";
-import { PersonCircle, Search } from "react-bootstrap-icons";
+import { Chat, ChatDotsFill, PersonCircle, Search } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -26,6 +26,11 @@ const DriverNavBar = () => {
     }
     return "";
   }
+  const logout = () => {
+    document.cookie = "user_id=;";
+    document.cookie = "user_type=;";
+    navigate("/");
+  };
 
   useEffect(() => {
     const ck = getCookie("user_id");
@@ -69,16 +74,11 @@ const DriverNavBar = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto w-50 justify-content-around">
-          <li className="nav-item active ">
+          {/* <li className="nav-item active ">
             <a className="nav-link text-white" href="destinations">
               Destinations
             </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-white" href="/tour">
-              Tour Plan
-            </a>
-          </li>
+          </li> */}
 
           <li className="nav-item ">
             <a className="nav-link text-white" href="/aboutus">
@@ -88,6 +88,14 @@ const DriverNavBar = () => {
           <li className="nav-item">
             <a className="nav-link text-white" href="/contact">
               ContactUs
+            </a>
+          </li>
+          <li className="nav-item">
+            <a
+              className="nav-link text-white d-flex align-items-center"
+              href="/d-chat"
+            >
+              <span>Chat</span> <ChatDotsFill className="m-1" />
             </a>
           </li>
         </ul>
@@ -136,12 +144,14 @@ const DriverNavBar = () => {
                   Favorite Destinations
                 </a>
                 <div className="dropdown-divider"></div>
-                <a
+                <div
                   className="dropdown-item btn btn-danger text-danger"
-                  href="#"
+                  onClick={() => {
+                    logout();
+                  }}
                 >
                   Logout
-                </a>
+                </div>
               </div>
             </div>
           ) : (

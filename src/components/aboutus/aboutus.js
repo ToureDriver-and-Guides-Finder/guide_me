@@ -1,7 +1,10 @@
+import Footer from "../Footer";
+import NavBar from "../Navbar";
 import "../aboutus/carousel.css";
 const AboutUs = () => {
   return (
     <main>
+      <NavBar/>
       <div
         id="carouselExampleControls"
         class="carousel slide"
@@ -351,6 +354,7 @@ const AboutUs = () => {
 
         <hr class="featurette-divider" />
       </div>
+      <Footer/>
     </main>
   );
 };

@@ -91,7 +91,7 @@ const DriverHome = () => {
             <div className="row">
               {alltours.map((data) => (
                 <div className="col-lg-4 col-md-6 d-flex justify-content-center">
-                  <Link to="tour-details" state={{tdata:data}}>
+                  <Link to={"tour-details?tid="+data["tour_id"]}>
                   <div class="card mb-3" style={{ width: "18rem" }}>
                     <img
                       class="card-img-top"

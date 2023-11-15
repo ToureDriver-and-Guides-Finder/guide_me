@@ -57,7 +57,9 @@ const TouristAuth = () => {
         if (user_data.data !== "/") {
           setError(user_data.data);
         } else {
-          document.cookie = "user_id=" + data["email"];
+          document.cookie =
+            "user_id=" + data["email"] + ";max-age=" + 3600 * 24 * 3;
+          document.cookie = "user_type=" + "user" + ";max-age=" + 3600 * 24 * 3;
           navigate("/");
         }
       });
@@ -84,7 +86,9 @@ const TouristAuth = () => {
         if (data.data !== "/") {
           setError(data.data);
         } else {
-          document.cookie = "user_id=" + logdata["email"];
+          document.cookie =
+            "user_id=" + logdata["email"] + ";max-age=" + 3600 * 24 * 3;
+          document.cookie = "user_type=" + "user" + ";max-age=" + 3600 * 24 * 3;
           navigate("/");
         }
       });

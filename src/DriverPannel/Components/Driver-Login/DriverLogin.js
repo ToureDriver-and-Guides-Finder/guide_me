@@ -61,7 +61,10 @@ const DriverLogin = () => {
         if (user_data.data !== "/") {
           setError(user_data.data);
         } else {
-          document.cookie = "user_id=" + data["email"];
+          document.cookie =
+            "user_id=" + data["email"] + ";max-age=" + 3600 * 24 * 3;
+          document.cookie =
+            "user_type=" + "driver" + ";max-age=" + 3600 * 24 * 3;
           navigate("/");
         }
       });
@@ -88,7 +91,10 @@ const DriverLogin = () => {
         if (data.data !== "/") {
           setError(data.data);
         } else {
-          document.cookie = "user_id=" + logdata["email"];
+          document.cookie =
+            "user_id=" + logdata["email"] + ";max-age=" + 3600 * 24 * 3;
+          document.cookie =
+            "user_type=" + "driver" + ";max-age=" + 3600 * 24 * 3;
           navigate("/");
         }
       });
@@ -210,7 +216,7 @@ const DriverLogin = () => {
                 <div className="form-group lft">
                   <label for="vehicaltype">Vehical Type</label>
                   <select
-                    name="vehiytpe"
+                    name="vehical"
                     onChange={handleChange}
                     value={data.vehical}
                   >

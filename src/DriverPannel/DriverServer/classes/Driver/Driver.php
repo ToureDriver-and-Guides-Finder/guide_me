@@ -34,7 +34,7 @@ class Driver
             $dbcon = new DBConnector("guideme");
             $con = $dbcon->getConnection();
 
-            $query = "SELECT * from driver where email=?;";
+            $query = "SELECT * from driver where driver_id=?;";
             $statement = $con->prepare($query);
 
             $res = $statement->execute([$email]);

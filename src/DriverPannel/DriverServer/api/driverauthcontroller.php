@@ -38,7 +38,7 @@ switch ($data["params"]["function"]) {
         $model = $data["params"]["data"]["model"];
         $registration = $data["params"]["data"]["registration"];
 
-        $tauth->register($name, $email, $contact, $psw,$vehi,$mark,$model, $registration);
+        $tauth->register($name, $email, $contact, $psw, $vehi, $mark, $model, $registration);
 
 
     case "login":

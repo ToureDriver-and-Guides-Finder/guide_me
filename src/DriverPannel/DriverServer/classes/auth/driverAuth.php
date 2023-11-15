@@ -63,7 +63,7 @@ class DriverAuth extends AuthUser
         }
 
         // Use prepared statements to prevent SQL injection
-        $query = "SELECT password FROM driver WHERE email=?";
+        $query = "SELECT password FROM driver WHERE driver_id=?";
         $statement = $con->prepare($query);
         $statement->execute([$email]);
         $res = $statement->fetch();
@@ -91,7 +91,7 @@ class DriverAuth extends AuthUser
         // Hash the password before storing it
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO driver (driver_name, contact_number, email, password) VALUES (?, ?, ?, ?);
+        $query = "INSERT INTO driver (driver_name, contact_number, driver_id, password) VALUES (?, ?, ?, ?);
         INSERT INTO vehicle (driver_id, vehicle_type, vehical_mark, vehical_model,vehi_registration_number) VALUES (?, ?, ?, ?,?)";
         $statement = $con->prepare($query);
 

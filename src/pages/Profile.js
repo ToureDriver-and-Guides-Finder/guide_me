@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ShowTours from "./showTours";
@@ -10,6 +11,7 @@ import ShowOffers from "../components/Myoffers/ShowOffers";
 const Profile = () => {
   const [alldata, setAllData] = useState([]);
   const [content, setContent] = useState(0);
+  const navigate = useNavigate();
 
   function getCookie(cname) {
     let name = cname + "=";
@@ -82,7 +84,7 @@ const Profile = () => {
           <div className="row">
             <div className="col-lg-4">
               <div className="card mb-4">
-                <button className="btn btn-link text-black  d-flex align-items-center justify-content-end w-100">
+                <button className="btn btn-link text-black  d-flex align-items-center justify-content-end w-100" onClick={() => navigate("EditProfile")}>
                   Edit Profile{" "}
                   <Gear style={{ color: "black", marginLeft: "5px" }} />
                 </button>

@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import NavBar from "../components/Navbar";
-import Footer from "../components/Footer";
-import ShowTours from "./showTours";
-import { Gear, HeartFill } from "react-bootstrap-icons";
-import FavPlaces from "../components/Places/FavPlaces";
-import ShowOffers from "../components/Myoffers/ShowOffers";
 
-const Profile = () => {
+import { Gear, HeartFill } from "react-bootstrap-icons";
+
+import DriverNavBar from "../Components/DriverNav";
+import ShowDriverOffers from "../Components/Driver-Offers/DriverOffers";
+import Footer from "../../components/Footer";
+import Calender from "../Components/Driver-calender/DriverCalender";
+
+const DriverProfile = () => {
   const [alldata, setAllData] = useState([]);
   const [content, setContent] = useState(0);
 
@@ -29,7 +30,7 @@ const Profile = () => {
   useEffect(() => {
     axios
       .post(
-        "http://localhost:80/guide_me/src/server/api/gettouristData.php?id=0",
+        "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/getDriverData.php?id=0",
         {
           params: {
             // id: props.props,
@@ -48,22 +49,20 @@ const Profile = () => {
   };
 
   const tourContent = [
-    <ShowTours props={alldata} />,
     <>
-      <ShowOffers props={'all'}/>
+      <ShowDriverOffers props={"all"} />
     </>,
     <>
-      <ShowOffers props={'confirmed'}/>
+      <ShowDriverOffers props={"confirmed"} />
     </>,
     <>
-      <div>content3</div>
+      <Calender />
     </>,
-    <FavPlaces/>,
   ];
 
   return (
     <>
-      <NavBar />
+      <DriverNavBar />
 
       <section style={{ backgroundColor: "#eee" }}>
         <div className="container py-5">
@@ -75,7 +74,7 @@ const Profile = () => {
               >
                 <ol className="breadcrumb mb-0">
                   <li className="breadcrumb-item active" aria-current="page">
-                    User Profile
+                    Driver Profile
                   </li>
                 </ol>
               </nav>
@@ -120,7 +119,7 @@ const Profile = () => {
                       <p className="mb-0">Full Name</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">{alldata.tourist_name}</p>
+                      <p className="text-muted mb-0">{alldata.driver_name}</p>
                     </div>
                   </div>
                   <hr />
@@ -129,7 +128,7 @@ const Profile = () => {
                       <p className="mb-0">Email</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">{alldata.email}</p>
+                      <p className="text-muted mb-0">{alldata.driver_id}</p>
                     </div>
                   </div>
                   <hr />
@@ -185,7 +184,7 @@ const Profile = () => {
                       changeContent(0);
                     }}
                   >
-                    My Tour
+                    Sent Offers
                   </button>
                   <button
                     className={
@@ -204,7 +203,7 @@ const Profile = () => {
                       changeContent(1);
                     }}
                   >
-                    Offers
+                    Confirmed Offers
                   </button>
                   <button
                     className={
@@ -223,45 +222,7 @@ const Profile = () => {
                       changeContent(2);
                     }}
                   >
-                    Confirmed Offers
-                  </button>
-                  <button
-                    className={
-                      content == 3
-                        ? "nav-link active"
-                        : "nav-link text-secondary"
-                    }
-                    id="nav-contact-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-contact"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-contact"
-                    aria-selected="false"
-                    onClick={() => {
-                      changeContent(3);
-                    }}
-                  >
-                    In progress
-                  </button>
-                  <button
-                    className={
-                      content == 4
-                        ? "nav-link active"
-                        : "nav-link text-secondary"
-                    }
-                    id="nav-contact-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-contact"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-contact"
-                    aria-selected="false"
-                    onClick={() => {
-                      changeContent(4);
-                    }}
-                  >
-                    Favourite Place <HeartFill style={{ color: "red" }} />
+                    My Calender
                   </button>
                 </div>
               </nav>
@@ -275,7 +236,6 @@ const Profile = () => {
                   {tourContent[content]}
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
@@ -285,4 +245,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default DriverProfile;

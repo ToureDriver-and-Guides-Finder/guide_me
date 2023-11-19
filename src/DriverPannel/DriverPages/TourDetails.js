@@ -14,6 +14,7 @@ import {
 import LocationPin from "../Components/Driver-Map/LocationPin";
 import { preventDefault } from "@fullcalendar/core/internal";
 import OfferModel from "../Components/Driver-Offer/OfferModel";
+import Calender from "../Components/Driver-calender/DriverCalender";
 
 const TourDetails = () => {
   const [data, setData] = useState();
@@ -317,12 +318,8 @@ const TourDetails = () => {
                   </div>
                 </div>
                 <h4>Current schedules</h4>
-                <div className="container bg-dark p-3">
-                  <FullCalendar
-                    plugins={[dayGridPlugin]}
-                    initialView="dayGridMonth"
-                  />
-                </div>
+
+                <Calender />
               </div>
               <OfferModel props={data} />
             </>

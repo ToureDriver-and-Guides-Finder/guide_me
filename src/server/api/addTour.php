@@ -28,10 +28,11 @@ $sdate = $data["params"]["data"]["startdate"];
 $fdate = $data["params"]["data"]["finishdate"];
 $no_of_passengers = $data["params"]["data"]["no_of_passengers"];
 $duration = $data["params"]["data"]["duration"];
-
 $desdata = serialize($data["params"]["destinations"]);
-$tourid=$data["params"]["tour_id"];
+$tourid = $data["params"]["tour_id"];
 $img = $data["params"]["data"]["displayImage"];
+$vehical = $data["params"]["data"]["vehical"];
+$ac = $data["params"]["data"]["ac"];
 
 
 
@@ -39,4 +40,4 @@ $img = $data["params"]["data"]["displayImage"];
 
 
 
-echo $tour->updateTour($name, $email, $contact, $sdate, $fdate, $no_of_passengers, $duration,$desdata, $tourid,$img);
+echo $tour->updateTour($name, $email, $contact, $sdate, $fdate, $no_of_passengers, $duration, $desdata, $tourid, $img, $vehical, $ac);

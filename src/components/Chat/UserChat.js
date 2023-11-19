@@ -387,47 +387,51 @@ const UserChatRoom = () => {
                 )}
               </div>
               <div className="card-footer bg-transparent border-success">
-                <form>
-                  <div
-                    className="btn-group w-100"
-                    role="group"
-                    aria-label="Basic example"
-                  >
-                    <a
-                      type="button"
-                      href={
-                        "/tour-confirm?id=" +
-                        data["tour_id"] +
-                        "&driver_id=" +
-                        driver_id
-                      }
-                      className="btn btn-success"
-                      style={{
-                        minWidth: "0px",
-                        width: "40%",
-                        padding: "8px",
-                        marginRight: "0px",
-                      }}
+                {data["tour_status"] !== "Confirmed" ? (
+                  <form>
+                    <div
+                      className="btn-group w-100"
+                      role="group"
+                      aria-label="Basic example"
                     >
-                      Accept Offer
-                    </a>
-                    <button
-                      type="button"
-                      className="btn btn-danger"
-                      style={{
-                        minWidth: "0px",
-                        width: "40%",
-                        padding: "8px",
-                        marginRight: "0px",
-                      }}
-                      data-toggle="modal"
-                      data-target="#declinemodel"
-                    >
-                      Decline Offer
-                    </button>
-                    <DeclineModel />
-                  </div>
-                </form>
+                      <a
+                        type="button"
+                        href={
+                          "/tour-confirm?id=" +
+                          data["tour_id"] +
+                          "&driver_id=" +
+                          driver_id
+                        }
+                        className="btn btn-success"
+                        style={{
+                          minWidth: "0px",
+                          width: "40%",
+                          padding: "8px",
+                          marginRight: "0px",
+                        }}
+                      >
+                        Accept Offer
+                      </a>
+                      <button
+                        type="button"
+                        className="btn btn-danger"
+                        style={{
+                          minWidth: "0px",
+                          width: "40%",
+                          padding: "8px",
+                          marginRight: "0px",
+                        }}
+                        data-toggle="modal"
+                        data-target="#declinemodel"
+                      >
+                        Decline Offer
+                      </button>
+                      <DeclineModel />
+                    </div>
+                  </form>
+                ) : (
+                  <div className="text-success text-center">Confirmed</div>
+                )}
               </div>
             </div>
 

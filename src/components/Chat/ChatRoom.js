@@ -338,46 +338,51 @@ const ChatRoom = () => {
                 )}
               </div>
               <div className="card-footer bg-transparent border-success">
-                <form>
-                  <div
-                    className="btn-group w-100"
-                    role="group"
-                    aria-label="Basic example"
-                  >
-                    <button
-                      type="submit"
-                      className="btn btn-success"
-                      style={{
-                        minWidth: "0px",
-                        width: "40%",
-                        padding: "8px",
-                        marginRight: "0px",
-                      }}
-                      data-toggle="modal"
-                      data-target="#staticBackdrop"
-                      onClick={(e) => {
-                        {
-                          if (currentOffer == "") {
-                            handleSubmit(e, "new");
-                          } else {
-                            handleSubmit(e, "update");
-                          }
-                        }
-                      }}
+                {currentOffer != "" &&
+                currentOffer[0]["offer_state"] !== "Confirmed" ? (
+                  <form>
+                    <div
+                      className="btn-group w-100"
+                      role="group"
+                      aria-label="Basic example"
                     >
-                      Send Offer
-                    </button>
+                      <button
+                        type="submit"
+                        className="btn btn-success"
+                        style={{
+                          minWidth: "0px",
+                          width: "40%",
+                          padding: "8px",
+                          marginRight: "0px",
+                        }}
+                        data-toggle="modal"
+                        data-target="#staticBackdrop"
+                        onClick={(e) => {
+                          {
+                            if (currentOffer == "") {
+                              handleSubmit(e, "new");
+                            } else {
+                              handleSubmit(e, "update");
+                            }
+                          }
+                        }}
+                      >
+                        Send Offer
+                      </button>
 
-                    <input
-                      type="text"
-                      name="offer"
-                      id="offer"
-                      placeholder="Enter Offer"
-                      onChange={handleChange}
-                      value={offer}
-                    />
-                  </div>
-                </form>
+                      <input
+                        type="text"
+                        name="offer"
+                        id="offer"
+                        placeholder="Enter Offer"
+                        onChange={handleChange}
+                        value={offer}
+                      />
+                    </div>
+                  </form>
+                ) : (
+                  <div className="text-success text-center">Confirmed Tour</div>
+                )}
               </div>
             </div>
           </div>

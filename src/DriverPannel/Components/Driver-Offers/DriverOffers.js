@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const ShowOffers = (props) => {
+const ShowDriverOffers = (props) => {
   console.log(props.props);
   const [alloffers, setAllOffers] = useState([]);
   const [msg, setMessage] = useState(false);
@@ -24,7 +24,7 @@ const ShowOffers = (props) => {
   const getOffer = () => {
     axios
       .post(
-        "http://localhost:80/guide_me/src/server/api/getUserOffer.php?id=0",
+        "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/getDriverOffers.php?id=0",
         {
           params: {
             // id: props.props,
@@ -55,7 +55,23 @@ const ShowOffers = (props) => {
                 style={{ width: "100px" }}
               />
             </div>
-            <div className="col-lg-9">{data.props["tour_name"]}</div>
+            <div className="col-lg-9">
+              <div>{data.props["tour_name"]}</div>
+              <div>
+                Offer State:{" "}
+                <b>
+                  {data.props["offer_state"] === "Pending" ? (
+                    <span className="bg-warning px-4 py-1 rounded text-white">
+                      {data.props["offer_state"]}
+                    </span>
+                  ) : (
+                    <span className="bg-success px-4 py-1 rounded text-white">
+                      {data.props["offer_state"]}
+                    </span>
+                  )}
+                </b>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -76,7 +92,7 @@ const ShowOffers = (props) => {
               return (
                 <a
                   href={
-                    "/chatRoom?id=" +
+                    "/d-chatRoom?id=" +
                     data["tour_id"] +
                     "&driver_id=" +
                     data["driver_id"]
@@ -98,7 +114,7 @@ const ShowOffers = (props) => {
               return (
                 <a
                   href={
-                    "/chatRoom?id=" +
+                    "/d-chatRoom?id=" +
                     data["tour_id"] +
                     "&driver_id=" +
                     data["driver_id"]
@@ -117,4 +133,4 @@ const ShowOffers = (props) => {
   );
 };
 
-export default ShowOffers;
+export default ShowDriverOffers;

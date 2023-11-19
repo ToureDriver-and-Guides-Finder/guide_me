@@ -9,21 +9,25 @@ import { Link } from "react-router-dom";
 const DriverHome = () => {
   const [msg, setMessage] = useState(false);
   const [alltours, setAllTours] = useState([]);
-
+  const [count, setCount] = useState(0);
   useEffect(() => {
     axios
       .get(
         "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/recommendedTour.php?id=0"
       )
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         if (data.data == "No data") {
           setMessage(true);
         } else {
           setAllTours(data.data);
         }
       });
-  }, []);
+    const interval = setInterval(() => {
+      setCount(count + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [count]);
 
   const FilterContainer = () => {
     return (
@@ -91,27 +95,29 @@ const DriverHome = () => {
             <div className="row">
               {alltours.map((data) => (
                 <div className="col-lg-4 col-md-6 d-flex justify-content-center">
-                  <Link to={"tour-details?tid="+data["tour_id"]}>
-                  <div class="card mb-3" style={{ width: "18rem" }}>
-                    <img
-                      class="card-img-top"
-                      src={data["displayImage"]}
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <div className="row">
-                        <div className="col">
-                          <div className="row d-flex align-items-center mb-2">
-                            <div className="col-1">
-                              <PersonCircle
-                                style={{ color: "gray" }}
-                                className="fs-6"
-                              />
+                  <Link to={"tour-details?tid=" + data["tour_id"]}>
+                    <div class="card mb-3" style={{ width: "18rem" }}>
+                      <img
+                        class="card-img-top"
+                        src={data["displayImage"]}
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <div className="row">
+                          <div className="col">
+                            <div className="row d-flex align-items-center mb-2">
+                              <div className="col-1">
+                                <PersonCircle
+                                  style={{ color: "gray" }}
+                                  className="fs-6"
+                                />
+                              </div>
+                              <div className="col-6 text-truncate">
+                                {data["tourist_name"]}
+                              </div>
                             </div>
-                            <div className="col-6 text-truncate">Sasith</div>
                           </div>
-                        </div>
-                        {/* <div className="col-lg-8">
+                          {/* <div className="col-lg-8">
                           <small className="text-muted">
                             {new Date(
                               data["published_time"]
@@ -122,39 +128,58 @@ const DriverHome = () => {
                               ).toLocaleTimeString()}
                           </small>
                         </div> */}
-                      </div>
-                      <div className="row ">
-                        <h5 className="font-weight-bold">
-                          <b>Places to visit</b>
-                        </h5>
-                        <ul class="list-inline text-truncate">
-                          {data["locations"].map((location) => (
-                            <li class="list-inline-item small bg-info p-2 rounded text-white">
-                              {location}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="row mt-3">
-                        <div className="col">
-                          <div className="small">
-                            <b>Start:</b> {data["start_date"]}
+                        </div>
+                        <div className="row ">
+                          <h5 className="font-weight-bold">
+                            <b>Places to visit</b>
+                          </h5>
+                          <ul class="list-inline text-truncate">
+                            {data["locations"].map((location) => (
+                              <li class="list-inline-item small bg-info p-2 rounded text-white">
+                                {location}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="row mt-3">
+                          <div className="col">
+                            <div className="small">
+                              <b>Start:</b> {data["start_date"]}
+                            </div>
+                          </div>
+                          <div className="col">
+                            <div className="small">
+                              <b>End:</b> {data["end_date"]}
+                            </div>
                           </div>
                         </div>
-                        <div className="col">
+                        <div className="row mt-3">
                           <div className="small">
-                            <b>End:</b> {data["end_date"]}
+                            <b> {data["no_of_passengers"]}</b> Passengers
                           </div>
                         </div>
-                      </div>
-                      <div className="row mt-3">
-                        <div className="small">
-                          <b> {data["no_of_passengers"]}</b> Passengers
+                        <div className="row mt-3">
+                          <div className="small">
+                            <b> Asked Vehical </b>
+                            <span className="bg-success px-3 py-1 rounded text-white">
+                              {data["vehical"]}
+                            </span>
+                            {data["ac"] ? (
+                              <span className="text-secondary">
+                                {" "}
+                                <b> A/C</b>
+                              </span>
+                            ) : (
+                              <span className="text-secondary">
+                                {" "}
+                                <b>Non A/C</b>
+                              </span>
+                            )}
+                          </div>
                         </div>
+                        {/* <button className="btn btn-primary">See more</button> */}
                       </div>
-                      {/* <button className="btn btn-primary">See more</button> */}
                     </div>
-                  </div>
                   </Link>
                 </div>
               ))}

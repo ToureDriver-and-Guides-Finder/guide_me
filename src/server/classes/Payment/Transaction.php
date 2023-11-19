@@ -16,8 +16,9 @@ class Transaction
     private String $to;
     private String $payment_method;
     private int $offer_id;
+    private String $pickuplocation;
 
-    function __construct($payment_method, $from, $to, $price, $res, $tour_id, $offerId)
+    function __construct($payment_method, $from, $to, $price, $res, $tour_id, $offerId, $pickuplocation)
 
     {
         $this->payment_method = $payment_method;
@@ -27,6 +28,7 @@ class Transaction
         $this->tour_id = $tour_id;
         $this->price = $price;
         $this->offer_id = $offerId;
+        $this->pickuplocation = $pickuplocation;
     }
 
 
@@ -47,21 +49,22 @@ class Transaction
                     $this->price,
                     $this->receiver,
                     $this->tour_id,
-                    $this->offer_id,
+
                 ]
             );
             if ($result) {
-                $query1 = "Update tour set tour_status='Confirmed' where tour_id=?;
-                Update offer set offer_state='Confirmed' where offer_id=?;
-                ";
+
+                $query1 = "Update tour set tour_status='Confirmed', pickup_location=? where tour_id=?;
+                Update offer set offer_state='Confirmed' where offer_id=?;";
                 $statement1 = $con->prepare($query1);
                 $result1 = $statement1->execute(
                     [
+                        $this->pickuplocation,
                         $this->tour_id,
-                        $this->tour_id,
+                        $this->offer_id,
                     ]
                 );
-                return $result;
+                return $result1;
             }
         } catch (PDOException $ex) {
             return $ex->getMessage();

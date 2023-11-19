@@ -31,6 +31,7 @@ import DriverChat from "./DriverPannel/Components/Driver-Chat/DriverChat";
 import ChatRoom from "./components/Chat/ChatRoom";
 import UserChatRoom from "./components/Chat/UserChat";
 import ConfirmTour from "./components/PaymentProseed/ConfirmTour";
+import DriverProfile from "./DriverPannel/DriverPages/DriverProfile";
 
 // const NavBar = lazy(() => import("./components/Navbar"));
 
@@ -100,6 +101,7 @@ function App() {
       <Route path="/tour-details" element={<TourDetails />} />
       <Route path="/d-chat" element={<DriverChat />} />
       <Route path="/d-chatRoom" element={<ChatRoom />} />
+      <Route path="/d-profile" element={<DriverProfile />} />
       {/* <Route path="/destinations" element={<Destinations />} />
       <Route path="/gig" element={<Form />} />
       <Route path="/tour" element={<TourMain />} />

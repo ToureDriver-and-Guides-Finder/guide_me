@@ -70,7 +70,43 @@ class Offer
         $con = $dbcon->getConnection();
 
 
-        $query = "SELECT o.offer_id, o.price, o.driver_id,t.tour_id, t.tour_name, t.displayImage FROM offer AS o JOIN tour AS t ON o.tour_id = t.tour_id WHERE t.email = ?;";
+        $query = "SELECT o.offer_id, o.price, o.driver_id,o.offer_state,t.tour_id, t.tour_name, t.displayImage FROM offer AS o JOIN tour AS t ON o.tour_id = t.tour_id WHERE t.email = ?;";
+
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$userid]);
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // echo $result;
+        $arr = json_encode($result);
+        print_r($arr);
+    }
+    public function getDriverOffer($userid)
+    {
+
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+
+        $query = "SELECT o.offer_id, o.price, o.driver_id,o.offer_state,t.tour_id, t.tour_name, t.displayImage FROM offer AS o JOIN tour AS t ON o.tour_id = t.tour_id WHERE o.driver_id = ?;";
+
+        $statement = $con->prepare($query);
+
+        $res = $statement->execute([$userid]);
+
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // echo $result;
+        $arr = json_encode($result);
+        print_r($arr);
+    }
+    public function getConfirmedDriverOffers($userid)
+    {
+
+        $dbcon = new DBConnector("guideme");
+        $con = $dbcon->getConnection();
+
+
+        $query = "SELECT o.offer_id, o.price, o.driver_id,o.offer_state,t.tour_id, t.tour_name, t.displayImage,t.start_date,t.end_date FROM offer AS o JOIN tour AS t ON o.tour_id = t.tour_id WHERE o.driver_id = ? and o.offer_state='Confirmed';";
 
         $statement = $con->prepare($query);
 

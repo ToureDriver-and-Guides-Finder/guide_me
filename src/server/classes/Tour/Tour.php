@@ -18,28 +18,16 @@ class Tour
 
 
 
-    public function updateTour($fname, $email, $contact, $sdate, $fdate, $no_of_pass, $duration, $desdata, $tourid, $img)
+    public function updateTour($fname, $email, $contact, $sdate, $fdate, $no_of_pass, $duration, $desdata, $tourid, $img, $vehi, $ac)
     {
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
-        // $tourist = new Tourist();
 
-        // $t_id = $tourist->getTouristId("sasithmj@gmail.com");
-
-        // $query1 = "SELECT tourist_id from tourist where email=?;";
-        // $statement1 = $con->prepare($query1);
-
-        // $res = $statement1->execute([$email]);
-
-
-        // $result = $statement1->fetch(PDO::FETCH_ASSOC);
-        // $t_id = $result["tourist_id"];
-
-        $query = "UPDATE tour set no_of_passengers=?,start_date=?,end_date=?,locations=?,tour_status=?,displayImage=?where tour_id=? ;";
+        $query = "UPDATE tour set no_of_passengers=?,start_date=?,end_date=?,locations=?,tour_status=?,displayImage=?,vehical=?,ac=? where tour_id=? ;";
 
         $statement = $con->prepare($query);
 
-        $res = $statement->execute([$no_of_pass, $sdate, $fdate, $desdata, "Available", $img, $tourid]);
+        $res = $statement->execute([$no_of_pass, $sdate, $fdate, $desdata, "Available", $img, $vehi, $ac, $tourid]);
 
         echo $res;
     }
@@ -48,18 +36,7 @@ class Tour
     {
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
-        // $tourist = new Tourist();
 
-        // $t_id = $tourist->getTouristId("sasithmj@gmail.com");
-
-        // $query1 = "SELECT tourist_id from tourist where email=?;";
-        // $statement1 = $con->prepare($query1);
-
-        // $res = $statement1->execute([$email]);
-
-
-        // $result = $statement1->fetch(PDO::FETCH_ASSOC);
-        // $t_id = $result["tourist_id"];
 
         $query = "Insert into tour (tour_name,email) values(?,?);";
 
@@ -78,18 +55,7 @@ class Tour
     {
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
-        // $tourist = new Tourist();
 
-        // $t_id = $tourist->getTouristId("sasithmj@gmail.com");
-
-        // $query1 = "SELECT tourist_id from tourist where email=?;";
-        // $statement1 = $con->prepare($query1);
-
-        // $res = $statement1->execute([$email]);
-
-
-        // $result = $statement1->fetch(PDO::FETCH_ASSOC);
-        // $t_id = $result["tourist_id"];
 
         $query = "SELECT * from tour where email=?;";
 
@@ -198,7 +164,7 @@ class Tour
         $dbcon = new DBConnector("guideme");
         $con = $dbcon->getConnection();
 
-        $query = "SELECT * from tour where tour_status='Available';";
+        $query = "SELECT * from tour,tourist where tour_status='Available' and tour.email=tourist.email;";
 
         $statement = $con->prepare($query);
 
@@ -223,9 +189,7 @@ class Tour
         }
     }
 
-    public function calculateEstimations($locations){
-
-        
-
+    public function calculateEstimations($locations)
+    {
     }
 }

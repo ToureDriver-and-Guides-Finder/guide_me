@@ -11,6 +11,8 @@ import PhoneInput from "react-phone-number-input";
 import { Nav } from "react-bootstrap";
 import NavBar from "../Navbar";
 import Footer from "../Footer";
+// import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import Select from "react-select";
 
 export default function Form() {
@@ -39,6 +41,8 @@ export default function Form() {
     country: "",
     language: "",
     displayImage: "",
+    vehical: "",
+    ac: true,
   });
   // const [destinations, setDestinations] = useState([]);
 
@@ -189,9 +193,26 @@ export default function Form() {
     });
     //  return message;
   };
-
+  const vehicalSelect = (e) => {
+    setData({
+      ...data,
+      ["vehical"]: e.value,
+    });
+    //  return message;
+  };
+  const changeAc = (e) => {
+    setData({
+      ...data,
+      ["ac"]: e.target.value,
+    });
+    //  return message;
+  };
+  const vehicals = [
+    { label: "Car", value: "Car" },
+    { label: "Van", value: "Van" },
+    { label: "Bus", value: "Bus" },
+  ];
   const formSteps = [
-    // Define your form steps as JSX here
     // Each step should have a unique key and contain the corresponding form fields
     <div
       key={0}
@@ -255,10 +276,6 @@ export default function Form() {
           <div className="input-group">
             <lable>Native Language</lable>
             <LanguageDropdown languageCallback={languageCallback} />
-            {/* <select id="lan">
-              <option value="language">Language</option>
-            
-            </select> */}
           </div>
         </div>
       </div>
@@ -282,48 +299,12 @@ export default function Form() {
       }
     >
       {/* Step 2 Form Fields */}
-      <div className="row border">
-        <Select options={districts} isMulti onChange={destinationchange} />
-        {/* <div className="col-sm-4">
-          {" "}
-          <div className="input-group">
-            <div className="package">
-              <select
-                id="districts"
-                name="district"
-                onChange={destinationchange}
-              >
-                {districts.map((data, key) => (
-                  <option value={data["district"]} key={key}>
-                    {data["district"]}{" "}
-                  </option>
-                ))}
-
-            
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-8 d-flex align-items-center">
-          <div className="row">
-            {destinations.map((data) => (
-              <div className="col mb-4 w-100" id={data}>
-                <span className="destination-label">
-                  {data}
-                  <button
-                    type="button"
-                    class="btn-close"
-                    aria-label="Close"
-                    id={data}
-                    onClick={(e) => {
-                      removeDestination(e);
-                    }}
-                  ></button>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div> */}
+      <div className="row">
+        <CreatableSelect
+          options={districts}
+          isMulti
+          onChange={destinationchange}
+        />
       </div>
 
       <div className="row">
@@ -336,6 +317,7 @@ export default function Form() {
               id="s-date"
               onChange={handleChange}
               value={data.startdate}
+              min={new Date().toISOString().split("T")[0]}
             />
           </div>
         </div>
@@ -348,6 +330,7 @@ export default function Form() {
               id="f-date"
               onChange={handleChange}
               value={data.finishdate}
+              min={new Date().toISOString().split("T")[0]}
             />
           </div>
         </div>
@@ -381,6 +364,58 @@ export default function Form() {
           </div>
         </div>
       </div>
+      <div className="row mb-4">
+        <div className="col-lg-8">
+          <label htmlFor="vehical">Prefferd Vehical</label>
+          <Select
+            className="basic-single"
+            classNamePrefix="select"
+            defaultValue={vehicals[0]}
+            isDisabled={false}
+            isClearable={true}
+            isSearchable={true}
+            name="vehical"
+            options={vehicals}
+            id="vehical"
+            onChange={(e) => vehicalSelect(e)}
+          />
+        </div>
+        <div className="col-lg-4">
+          <div className="row">
+            <label>Air Conditioned</label>
+            <div className="col-6">
+              <div className="form-check checkbox-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="ac"
+                  id="inlineRadio1"
+                  value={true}
+                  onClick={(e) => changeAc(e)}
+                />
+                <label className="form-check-label mx-4" for="inlineRadio1">
+                  A/C
+                </label>
+              </div>
+            </div>
+            <div className="col-6">
+              <div className="form-check checkbox-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="ac"
+                  id="inlineRadio2"
+                  value={false}
+                  onClick={(e) => changeAc(e)}
+                />
+                <label className="form-check-label mx-4" for="inlineRadio2">
+                  NON/AC
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Add your form fields */}
       <div className="btns-group">
@@ -398,98 +433,6 @@ export default function Form() {
         <AddNewTour props={{ data: data, destinations: destinations }} />
       </div>
     </div>,
-    // Add more form steps as needed
-    // <div
-    //   key={2}
-    //   className={
-    //     formStepsNum === 2 ? "form-step form-step-active" : "form-step"
-    //   }
-    // >
-    //   {/* Step 2 Form Fields */}
-    //   <div className="input-group">
-    //     <label htmlFor="pay">Payment Range</label>
-    //     <input type={"range"} name="pay" id="pay" min="100000" max="10000000" />
-    //   </div>
-    //   <div className="input-group">
-    //     <div className="package">
-    //       <select id="vehical">
-    //         <option value="vechical">Vehical Type</option>
-    //         {/* Add other options */}
-    //       </select>
-    //     </div>
-    //   </div>
-    //   <div className="input-group">
-    //     <input type={"text"} name="age-d" id="age-d" placeholder="Age" />
-    //   </div>
-    //   <div className="input-group">
-    //     <label htmlFor="gender">Gender</label>
-    //     <div className="gender-inputs">
-    //       <input type="radio" name="gender" id="male" value="male" />
-    //       <label htmlFor="male">Male</label>
-    //       <input type="radio" name="gender" id="female" value="female" />
-    //       <label htmlFor="female">Female</label>
-    //     </div>
-    //   </div>
-    //   <div className="input-group">
-    //     <div className="package">
-    //       <select id="lan">
-    //         <option value="language">Language</option>
-    //         {/* Add other options */}
-    //       </select>
-    //     </div>
-    //   </div>
-    //   {/* Add your form fields */}
-    //   <div className="btns-group">
-    //     <button onClick={() => handlePrevStep()} className="btn btn-prev">
-    //       Previous
-    //     </button>
-    //     <button onClick={() => handleNextStep()} className="btn btn-next">
-    //       Next
-    //     </button>
-    //   </div>
-    // </div>,
-
-    // <div
-    //   key={3}
-    //   className={
-    //     formStepsNum === 3 ? "form-step form-step-active" : "form-step"
-    //   }
-    // >
-    //   {/* Step 2 Form Fields */}
-    //   <div className="input-group">
-    //     <label htmlFor="pay">Payment Range</label>
-    //     <input type={"range"} name="pay" id="pay" min="100000" max="10000000" />
-    //   </div>
-    //   <div className="input-group">
-    //     <div className="package">
-    //       <select id="exp">
-    //         <option value="exp">Year Of Experience</option>
-
-    //       </select>
-    //     </div>
-    //   </div>
-    //   <div className="input-group">
-    //     <input type={"text"} name="age-d" id="age-d" placeholder="Age" />
-    //   </div>
-    //   <div className="input-group">
-    //     <label htmlFor="gender">Gender</label>
-    //     <div className="gender-inputs">
-    //       <input type="radio" name="gender" id="male" value="male" />
-    //       <label htmlFor="male">Male</label>
-    //       <input type="radio" name="gender" id="female" value="female" />
-    //       <label htmlFor="female">Female</label>
-    //     </div>
-    //   </div>
-
-    //   <div className="btns-group">
-    //     <button onClick={() => handlePrevStep()} className="btn btn-prev">
-    //       Previous
-    //     </button>
-    //     <button onClick={() => handleNextStep()} className="btn btn-next">
-    //       Add Gig
-    //     </button>
-    //   </div>
-    // </div>,
   ];
 
   const progressSteps = ["Personal Information", "Tour Details"];

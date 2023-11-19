@@ -2,7 +2,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/js/src/collapse.js";
 import Logo from "../../images/logo1.png";
 import "../Components/nav.css";
-import { Chat, ChatDotsFill, PersonCircle, Search } from "react-bootstrap-icons";
+import {
+  Chat,
+  ChatDotsFill,
+  PersonCircle,
+  Search,
+} from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -134,13 +139,13 @@ const DriverNavBar = () => {
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <a className="dropdown-item" href="/profile">
+                <a className="dropdown-item" href="/d-profile">
                   Profile
                 </a>
-                <a className="dropdown-item" href="/profile">
+                <a className="dropdown-item" href="/d-profile">
                   My Tours
                 </a>
-                <a className="dropdown-item" href="/profile">
+                <a className="dropdown-item" href="/d-profile">
                   Favorite Destinations
                 </a>
                 <div className="dropdown-divider"></div>

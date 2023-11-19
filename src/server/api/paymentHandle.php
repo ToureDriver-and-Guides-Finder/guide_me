@@ -42,11 +42,13 @@ try {
             $res = $data["params"]['res'];
             $tour_id = $data["params"]['tour_id'];
             $offer_id = $data["params"]['offer_id'];
+            $pickup_location = serialize($data["params"]['pickup_location']);
 
             // Wrap the instantiation and method call in a try-catch block
             try {
-                $transaction = new Transaction($payment_method, $from, $to, $price, $res, $tour_id, $offer_id);
+                $transaction = new Transaction($payment_method, $from, $to, $price, $res, $tour_id, $offer_id, $pickup_location);
                 echo $transaction->doTransaction();
+                // echo $pickup_location;
             } catch (Exception $e) {
                 // Handle the exception, log it, or return an error response
                 echo json_encode(['error' => $e->getMessage()]);

@@ -44,6 +44,7 @@ const OfferModel = (props) => {
             price: offer,
             driver_id: getCookie("user_id"),
             tour_id: props.props["tour_id"],
+            func: "new",
           },
         }
       )

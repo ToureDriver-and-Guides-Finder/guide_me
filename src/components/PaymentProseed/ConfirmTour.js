@@ -27,6 +27,7 @@ const ConfirmTour = () => {
   const [Allmessage, setAllMgs] = useState();
   const [currentOffer, setCurrentOffer] = useState("");
   const [driver_id, setDriverId] = useState("");
+  const [pickupaddress, setPickUpAddress] = useState("");
 
   const [state, setState] = useState({
     number: "",
@@ -143,9 +144,9 @@ const ConfirmTour = () => {
     }
     return "";
   }
-  const handleChange = (e) => {
+  const handlePickupAddress = (e) => {
     // e.preventDefault();
-    setOffer(e.target.value);
+    setPickUpAddress(e.target.value);
   };
   //   console.log(props.props);
   //   setData(props.props);
@@ -167,6 +168,7 @@ const ConfirmTour = () => {
             offer_id: currentOffer[0]["offer_id"],
             res: "Driver",
             tour_id: currentOffer[0]["tour_id"],
+            pickup_location: markers,
           },
         }
       )
@@ -190,15 +192,30 @@ const ConfirmTour = () => {
     }
   };
 
+  const getLatLng = (place) => {
+    const URL =
+      "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+      place +
+      "&key=AIzaSyA3pAqddClbAT-GzSbGaFF6vJgeq3iu6-k";
+    axios.post(URL).then((data) => {
+      setMarker(data.data["results"][0]["geometry"].location);
+
+      // setLocationPin((locationdata) => [
+      //   ...locationdata,
+      //   data.data["results"][0]["geometry"].location,
+      // ]);
+    });
+  };
+
   return (
     <>
       <NavBar />
       <ToastContainer />
       <div className="container mt-2 ">
         <div className="container mt-3 shadow p-3 mb-5 bg-white rounded text-black">
-          <h4>
+          <h5>
             <b>Confirm Driver</b>
-          </h4>
+          </h5>
         </div>
         <div className="container">
           <div className="row">
@@ -208,6 +225,26 @@ const ConfirmTour = () => {
                   Select Pickup Location On the Map.
                 </h5>
               </div>
+              <div className="d-flex flex-row mb-4">
+                <input
+                  type="text"
+                  onChange={handlePickupAddress}
+                  name="pickupaddress"
+                  value={pickupaddress}
+                  className="w-75"
+                  placeholder="Enter Pickup Address"
+                />
+                <button
+                  className="btn btn-primary w-25"
+                  style={{ minWidth: "0px" }}
+                  onClick={() => {
+                    getLatLng(pickupaddress);
+                  }}
+                >
+                  Add Location
+                </button>
+              </div>
+
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 zoom={7}
@@ -297,9 +334,9 @@ const ConfirmTour = () => {
           </div>
         </div>
         <div className="container mt-4 shadow p-3 mb-5 bg-white rounded text-black">
-          <h4>
+          <h5>
             <b>Payment</b>
-          </h4>
+          </h5>
         </div>
         <div className="container">
           <div className="row">

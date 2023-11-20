@@ -50,15 +50,17 @@ class Chat
         $con = $dbcon->getConnection();
 
 
-        $query = "SELECT c.chat_id, c.sender, c.recerver, c.msg, c.created_on, c.tour_id
-FROM chat AS c
-INNER JOIN (
-    SELECT tour_id, MAX(created_on) AS max_created_on
-    FROM chat
-    WHERE sender = ? OR recerver = ?
-    GROUP BY tour_id
-) AS subquery
-ON c.tour_id = subquery.tour_id AND c.created_on = subquery.max_created_on ORDER BY c.created_on DESC;";
+        $query = "SELECT c.chat_id, c.sender, c.recerver, c.msg, c.created_on, c.tour_id, t.tourist_name
+              FROM chat AS c
+              INNER JOIN (
+                  SELECT tour_id, MAX(created_on) AS max_created_on
+                  FROM chat
+                  WHERE sender = ? OR recerver = ?
+                  GROUP BY tour_id
+              ) AS subquery
+              ON c.tour_id = subquery.tour_id AND c.created_on = subquery.max_created_on
+              INNER JOIN tourist AS t ON c.sender = t.email OR c.recerver = t.email
+              ORDER BY c.created_on DESC;";
 
 
         $statement = $con->prepare($query);

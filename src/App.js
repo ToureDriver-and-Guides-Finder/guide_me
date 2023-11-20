@@ -32,6 +32,8 @@ import ChatRoom from "./components/Chat/ChatRoom";
 import UserChatRoom from "./components/Chat/UserChat";
 import ConfirmTour from "./components/PaymentProseed/ConfirmTour";
 import DriverProfile from "./DriverPannel/DriverPages/DriverProfile";
+import UserProfile from "./pages/EditProfile";
+import GuideLogin from "./GuidePannel/components/Guide-Login/GuideLogin";
 
 // const NavBar = lazy(() => import("./components/Navbar"));
 
@@ -69,6 +71,9 @@ function App() {
       } else if (ck === "user") {
         setAuth(true);
         setAuthState(0);
+      } else if (ck === "guide") {
+        setAuth(true);
+        setAuthState(2);
       }
       setcookiedata(true);
     } else {
@@ -91,8 +96,10 @@ function App() {
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/login" element={<TouristAuth />} />
       <Route path="/d-login" element={<DriverLogin />} />
+      <Route path="/g-login" element={<GuideLogin />} />
       <Route path="/chatRoom" element={<UserChatRoom />} />
       <Route path="/tour-confirm" element={<ConfirmTour />} />
+      <Route path="/EditProfile" element={<UserProfile />} />
     </Routes>,
     <Routes>
       <Route path="/" element={<DiverHomePage />} />
@@ -102,15 +109,15 @@ function App() {
       <Route path="/d-chat" element={<DriverChat />} />
       <Route path="/d-chatRoom" element={<ChatRoom />} />
       <Route path="/d-profile" element={<DriverProfile />} />
-      {/* <Route path="/destinations" element={<Destinations />} />
-      <Route path="/gig" element={<Form />} />
-      <Route path="/tour" element={<TourMain />} />
-      <Route path="/destination-category" element={<DestinationsCategory />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/contact" element={<ContactUs />} />
-      <Route path="/destination_details" element={<DestinationDetail />} />
-      <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/login" element={<TouristAuth />} /> */}
+    </Routes>,
+    <Routes>
+      <Route path="/" element={<DiverHomePage />} />
+      <Route path="*" element={<PageNotFound />} />
+      <Route path="/g-login" element={<GuideLogin />} />
+      <Route path="/tour-details" element={<TourDetails />} />
+      <Route path="/d-chat" element={<DriverChat />} />
+      <Route path="/d-chatRoom" element={<ChatRoom />} />
+      <Route path="/d-profile" element={<DriverProfile />} />
     </Routes>,
     <Routes>
       <Route path="/" element={<DashBoard />} />

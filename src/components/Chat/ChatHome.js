@@ -46,7 +46,13 @@ const ChatHome = () => {
       <div className="container">
         {allChats.map((data) => (
           <a href={"/d-chatRoom?id=" + data.tour_id}>
-            <SingleChatCard props={{ msg: data.msg, date: data.created_on }} />
+            <SingleChatCard
+              props={{
+                msg: data.msg,
+                date: data.created_on,
+                sender: data.tourist_name,
+              }}
+            />
           </a>
         ))}
       </div>

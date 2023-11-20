@@ -1,6 +1,7 @@
 import { PersonCircle, PersonFill } from "react-bootstrap-icons";
 
 const SingleChatCard = (props) => {
+  console.log(props.props["date"]);
   return (
     <>
       <div class="card mt-4">
@@ -14,15 +15,19 @@ const SingleChatCard = (props) => {
             <div className="col-lg-8">
               <div className="row">
                 {" "}
-                <h5 class="card-title">Name</h5>
+                <h5 class="card-title">
+                  <b>{props.props["sender"]}</b>
+                </h5>
               </div>
               <div className="row">
-                <p class="card-text">{props.props["msg"]}</p>
+                <p class="card-text text-secondary">{props.props["msg"]}</p>
               </div>
             </div>
             <div className="col-lg-2">
-              <p class="card-text">
-                {new Date(props.props["created_on"]).toLocaleTimeString()}
+              <p class="card-text text-secondary">
+                {new Date(props.props["date"]).toLocaleDateString()}
+                <br></br>
+                {new Date(props.props["date"]).toLocaleTimeString()}
               </p>
             </div>
           </div>

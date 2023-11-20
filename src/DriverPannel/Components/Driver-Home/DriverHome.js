@@ -10,6 +10,22 @@ const DriverHome = () => {
   const [msg, setMessage] = useState(false);
   const [alltours, setAllTours] = useState([]);
   const [count, setCount] = useState(0);
+  
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
   useEffect(() => {
     axios
       .get(
@@ -27,7 +43,7 @@ const DriverHome = () => {
       setCount(count + 1);
     }, 3000);
     return () => clearInterval(interval);
-  }, [count]);
+  }, []);
 
   const FilterContainer = () => {
     return (

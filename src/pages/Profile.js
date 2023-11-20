@@ -87,7 +87,7 @@ const Profile = () => {
           <div className="row">
             <div className="col-lg-4">
               <div className="card mb-4">
-                <button className="btn btn-link text-black  d-flex align-items-center justify-content-end w-100" onClick={() => navigate("EditProfile")}>
+                <button className="btn btn-link text-black  d-flex align-items-center justify-content-end w-100" onClick={() => navigate("/EditProfile")}>
                   Edit Profile{" "}
                   <Gear style={{ color: "black", marginLeft: "5px" }} />
                 </button>

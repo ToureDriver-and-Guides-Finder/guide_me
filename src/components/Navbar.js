@@ -81,7 +81,7 @@ const NavBar = () => {
             </a>
           </li>
           <li className="nav-item active ">
-            <a className="nav-link text-white" href="destinations">
+            <a className="nav-link text-white" href="g-login">
               Guide
             </a>
           </li>

@@ -55,7 +55,23 @@ const ShowOffers = (props) => {
                 style={{ width: "100px" }}
               />
             </div>
-            <div className="col-lg-9">{data.props["tour_name"]}</div>
+            <div className="col-lg-9">
+              {data.props["tour_name"]}
+              <div>
+                Offer State:{" "}
+                <b>
+                  {data.props["offer_state"] === "Pending" ? (
+                    <span className="bg-warning px-4 py-1 rounded text-white">
+                      {data.props["offer_state"]}
+                    </span>
+                  ) : (
+                    <span className="bg-success px-4 py-1 rounded text-white">
+                      {data.props["offer_state"]}
+                    </span>
+                  )}
+                </b>
+              </div>
+            </div>
           </div>
         </div>
       </div>

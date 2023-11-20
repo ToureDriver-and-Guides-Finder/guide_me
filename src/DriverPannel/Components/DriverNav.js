@@ -13,7 +13,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const DriverNavBar = () => {
   const [cookie, setcookiedata] = useState(false);
+  const [newusertype, setUserType] = useState("");
   const [userdata, setAllData] = useState([]);
+  const [guidedata, setAllGuideData] = useState([]);
 
   const navigate = useNavigate();
   function getCookie(cname) {
@@ -39,26 +41,48 @@ const DriverNavBar = () => {
 
   useEffect(() => {
     const ck = getCookie("user_id");
+    const usertype = getCookie("user_type");
+
     if (ck) {
       setcookiedata(true);
-      axios
-        .post(
-          "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/getDriverData.php?id=0",
-          {
-            params: {
-              // id: props.props,
-              userId: ck,
-            },
-          }
-        )
-        .then((data) => {
-          console.log(data.data);
-          setAllData(data.data);
-        });
+      setUserType(usertype);
+      if (usertype === "driver") {
+        axios
+          .post(
+            "http://localhost:80/guide_me/src/DriverPannel/DriverServer/api/getDriverData.php?id=0",
+            {
+              params: {
+                // id: props.props,
+                userId: ck,
+              },
+            }
+          )
+          .then((data) => {
+            console.log(data.data);
+            setAllData(data.data);
+          });
+      } else {
+        axios
+          .post(
+            "http://localhost:80/guide_me/src/GuidePannel/GuideServer/api/getGuidedata.php?id=0",
+            {
+              params: {
+                // id: props.props,
+                userId: ck,
+              },
+            }
+          )
+          .then((data) => {
+            console.log(data.data);
+            setAllGuideData(data.data);
+          });
+      }
     } else {
       setcookiedata(false);
     }
   }, []);
+  console.log(userdata);
+  console.log(guidedata);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-driver ">
@@ -126,10 +150,16 @@ const DriverNavBar = () => {
                 aria-expanded="false"
               >
                 <PersonCircle className="p-0 person" />
-                {userdata.length != 0 ? (
+
+                {userdata.length != 0 && newusertype === "driver" ? (
                   <span className="m-1">
                     {" "}
                     Hello, {userdata.driver_name.split(" ")[0]} !
+                  </span>
+                ) : guidedata.length != 0 && newusertype === "guide" ? (
+                  <span className="m-1">
+                    {" "}
+                    Hello, {guidedata.guide_name.split(" ")[0]} !
                   </span>
                 ) : (
                   ""

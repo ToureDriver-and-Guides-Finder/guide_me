@@ -35,7 +35,8 @@ const ChatRoom = () => {
                   textAlign: "right",
                 }}
               >
-                {new Date(props.msg["created_on"]).toLocaleTimeString()}
+                {new Date(props.msg["created_on"]).toLocaleTimeString()}<br></br>
+                {new Date(props.msg["created_on"]).toLocaleDateString()}<br></br>
               </span>
             </div>
           </div>
@@ -54,7 +55,9 @@ const ChatRoom = () => {
                   textAlign: "right",
                 }}
               >
-                {new Date(props.msg["created_on"]).toLocaleTimeString()}
+                {new Date(props.msg["created_on"]).toLocaleTimeString()}<br></br>
+                {new Date(props.msg["created_on"]).toLocaleDateString()}
+                <br></br>
               </span>
             </div>
           </div>

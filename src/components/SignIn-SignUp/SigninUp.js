@@ -50,7 +50,7 @@ export default function SignUp() {
             <a href="#" class="forgot">
               Forgot your password?
             </a>
-            <button>Sign In</button>
+            <button>Log In</button>
           </form>
         </div>
         <div className="overlay-container" onClick={handleOverlayClick}>
@@ -60,7 +60,7 @@ export default function SignUp() {
               <p>
                 To keep connected with us please login with your personal info
               </p>
-              <button id="overlayBtn">Sign In</button>
+              <button id="overlayBtn">Log In</button>
             </div>
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>

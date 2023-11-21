@@ -113,8 +113,33 @@ class Tourist extends AuthUser
         // Implement rating functionality here
     }
 
-    public function updateDetails()
-    {
-        // Implement update details functionality here
+    public function updateDetails($name, $email, $contact, $password, $country, $languages, $tourist_id)
+{
+    $DB = new DBConnector("guideme");
+    $con = $DB->getConnection();
+
+    // Hash the password before storing it
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $query = "UPDATE tourist SET tourist_name = ?, contact_number = ?, email = ?, password = ?, country = ?, languages = ? WHERE tourist_id = ?";
+    $statement = $con->prepare($query);
+
+    try {
+        $statement->execute([$name, $contact, $email, $hashedPassword, $country, $languages, $tourist_id]);
+
+        // Update class properties if needed
+        $this->first_name = $name;
+        $this->contact_number = $contact;
+        $this->email = $email;
+
+        // Redirect or return some success message
+        $auth = new AuthUser();
+        return "/";
+    } catch (Exception $e) {
+        // Log the error instead of displaying it
+        error_log($e->getMessage());
+        echo $e->getMessage();
     }
+}
+
 }

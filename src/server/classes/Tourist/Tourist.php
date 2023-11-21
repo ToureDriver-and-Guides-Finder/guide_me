@@ -47,4 +47,5 @@ class Tourist
             echo $e->getMessage();
         }
     }
+    
 }

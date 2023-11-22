@@ -34,6 +34,7 @@ import ConfirmTour from "./components/PaymentProseed/ConfirmTour";
 import DriverProfile from "./DriverPannel/DriverPages/DriverProfile";
 import UserProfile from "./pages/EditProfile";
 import GuideLogin from "./GuidePannel/components/Guide-Login/GuideLogin";
+import AllDestinations from "./pages/AllDestinations";
 
 // const NavBar = lazy(() => import("./components/Navbar"));
 
@@ -100,6 +101,7 @@ function App() {
       <Route path="/chatRoom" element={<UserChatRoom />} />
       <Route path="/tour-confirm" element={<ConfirmTour />} />
       <Route path="/EditProfile" element={<UserProfile />} />
+      <Route path="/alldestinations" element={<AllDestinations />} />
     </Routes>,
     <Routes>
       <Route path="/" element={<DiverHomePage />} />

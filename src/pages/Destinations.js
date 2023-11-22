@@ -2,12 +2,14 @@ import PolularDestinationCard from "../components/Destination-popular/populardes
 import DestinationCategory from "../components/Home-Destination/destination";
 import "../components/Destination-popular/card.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Destinations = () => {
   const [des_data, setData] = useState([]);
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -24,6 +26,11 @@ const Destinations = () => {
       });
   }, []);
 
+  const handleSeeMore = () => {
+    // Redirect to the "/AllDestinations" page
+    navigate("/alldestinations");
+  };
+
   console.log(des_data);
   return (
     <div>
@@ -37,8 +44,8 @@ const Destinations = () => {
       <div className="container mt-5">
         <div className="row justify-content-center g-5 p-card-row">
           {des_data.length != 0 ? (
-            des_data.map((data, key) => (
-              <div className="col-3">
+            des_data.slice(0, 12).map((data, key) => (
+              <div className="col-3" key={key}>
                 <PolularDestinationCard
                   props={{
                     name: data["name"],
@@ -56,7 +63,7 @@ const Destinations = () => {
           )}
         </div>
         <center>
-          <button className="btn btn-outline-primary load-more mt-4">
+          <button className="btn btn-outline-primary load-more mt-4" onClick={handleSeeMore}>
             See more
           </button>
         </center>

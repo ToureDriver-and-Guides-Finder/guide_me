@@ -12,10 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST["email"];
         $country = $_POST["country"];
         $languages = $_POST["languages"];
-        $tourist_id = $_SESSION['user_id']; // Adjust as per your session handling
+        $tourist_id = $_SESSION['tourist_id']; 
+        $gender = $_POST["gender"];
 
         $tourist = new Tourist();
-        $tourist->updateDetails($name, $email, $contact, "", $country, $languages, $tourist_id);
+        $tourist->updateDetails($name, $email, $contact, $gender, $country, $languages, $tourist_id);
         
         // Provide any additional response if needed
         echo "Profile updated successfully!";

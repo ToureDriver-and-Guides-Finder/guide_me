@@ -151,7 +151,8 @@ const EditProfile = () => {
                           type="text"
                           id="fname"
                           className="form-control"
-                          value={alldata.tourist_name}
+                          name="name"
+                          defaultValue={alldata.tourist_name}
                         />
                       </div>
 
@@ -161,23 +162,9 @@ const EditProfile = () => {
                           type="text"
                           id="mobile"
                           className="form-control"
-                          value={alldata.contact_number}
+                          name="contact"
+                          defaultValue={alldata.contact_number}
                         />
-                      </div>
-                      <div className="col-12">
-                        <label className="form-label">Password</label>
-                        <div className="input-group">
-                          <input
-                            type="password"
-                            id="pw"
-                            value=""
-                            className="form-control"
-                            aria-describedby="basic-addon2"
-                          />
-                          <span className="input-group-text" id="basic-addon2">
-                            <EyeFill />
-                          </span>
-                        </div>
                       </div>
                       <div className="col-12">
                         <label className="form-label">Email</label>
@@ -185,7 +172,8 @@ const EditProfile = () => {
                           type="text"
                           id="email"
                           className="form-control"
-                          value={alldata.email}
+                          name="email"
+                          defaultValue={alldata.email}
                         />
                       </div>
 
@@ -219,7 +207,7 @@ const EditProfile = () => {
                           type="text"
                           className="form-control"
                           readonly
-                          value=""
+                          defaultValue={alldata.tourist_gender}
                         />
                       </div>
 
